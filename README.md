@@ -7,7 +7,7 @@ __Web Service provided by http://viacep.com.br/__
 
 ### Demo
 
-[Demo Canducci ZipCode](http://canducci-canducci.c9.io/zipcode)
+[Demo Canducci ZipCode](http://zipcodedemo.herokuapp.com/)
 
 ## Quick start
 
