@@ -64,12 +64,12 @@ class ZipCode implements ZipCodeContract {
             } 
             else 
             {
-                $message = trans('artesaos-zipcode::zipcode.invalid_zip');
+                $message = trans('canducci-zipcode::zipcode.invalid_zip');
             }
         } 
         else
         {
-            $message = trans('artesaos-zipcode::zipcode.invalid_zip');
+            $message = trans('canducci-zipcode::zipcode.invalid_zip');
         }
 
         if (is_bool($renew))
@@ -82,7 +82,7 @@ class ZipCode implements ZipCodeContract {
             {
                 $message .= PHP_EOL;
             }
-            $message .= trans('artesaos-zipcode::zipcode.invalid_argument_renew');
+            $message .= trans('canducci-zipcode::zipcode.invalid_argument_renew');
         }
         
         if ($message === '')
