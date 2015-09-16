@@ -11,7 +11,9 @@ class ZipCode extends Facade {
      */
 	protected static function getFacadeAccessor()
 	{
+
 		return 'Canducci\ZipCode\ZipCode';
+
 	}
 	
 }

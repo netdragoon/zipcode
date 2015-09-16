@@ -33,11 +33,13 @@ class ZipCode implements ZipCodeContract {
      * @param $clientInterface (GuzzleHttp\ClientInterface)
      */
     public function __construct(CacheManager $cacheManager, ClientInterface $clientInterface)
-    {        
+    {
+
         $this->value           = '';
         $this->renew           = false;
         $this->cacheManager    = $cacheManager;        
         $this->clientInterface = $clientInterface;
+
     }
 
     /**
@@ -50,6 +52,7 @@ class ZipCode implements ZipCodeContract {
      */
     public function find($value, $renew = false)
     {
+
         $message = '';
         if (is_string($value))
         {
@@ -92,6 +95,7 @@ class ZipCode implements ZipCodeContract {
             return new ZipCodeInfo($valueInfo);
         }        
         throw new ZipCodeException($message);
+
     }
 
     /**
@@ -101,7 +105,8 @@ class ZipCode implements ZipCodeContract {
      * @throws ZipCodeException
      */
     private function getZipCodeInfo()
-    {       
+    {
+
         $this->renew();       
         if ($this->cacheManager->has('zipcode_'.$this->value))
         {            
@@ -130,6 +135,7 @@ class ZipCode implements ZipCodeContract {
             }                       
         }
         return null;
+
     }    
 
     /**
@@ -138,7 +144,8 @@ class ZipCode implements ZipCodeContract {
      * @return void
      */
     private function renew()
-    {   
+    {
+
         if ($this->renew && (is_null($this->value) === false)) 
         {           
             if ($this->cacheManager->has('zipcode_' . $this->value))
@@ -146,7 +153,8 @@ class ZipCode implements ZipCodeContract {
                 $this->cacheManager->forget('zipcode_' . $this->value);
             }           
             $this->renew = false;  
-        }              
+        }
+
     }
 
     /**
@@ -156,7 +164,10 @@ class ZipCode implements ZipCodeContract {
      */
     private function url() 
     {
+
         return str_replace('[cep]', $this->value, 'http://viacep.com.br/ws/[cep]/json/');
+
     }
+
 
 }

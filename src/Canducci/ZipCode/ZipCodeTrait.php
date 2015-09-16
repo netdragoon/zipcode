@@ -12,6 +12,8 @@ trait ZipCodeTrait {
      */
     public function zipcode($value, $renew = false)
     {
+
         return zipcode($value, $renew);
+
     }
 }

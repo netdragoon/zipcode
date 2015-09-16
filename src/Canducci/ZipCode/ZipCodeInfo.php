@@ -17,17 +17,20 @@ class ZipCodeInfo implements ZipCodeInfoContract {
      */
     public function __construct($valueJson) 
     {
+
         if (is_string($valueJson))
         {
             $this->valueJson = $valueJson;
-            if ($this->json_validate_zipcode() === false) {
-                throw new ZipCodeException( trans('artesaos-zipcode::zipcode.invalid_json_zip') );
+            if ($this->json_validate_zipcode() === false)
+            {
+                throw new ZipCodeException( trans('canducci-zipcode::zipcode.invalid_json_zip') );
             }
         }
         else
         {
-            throw new ZipCodeException( trans('artesaos-zipcode::zipcode.invalid_format_type_string') );
+            throw new ZipCodeException( trans('canducci-zipcode::zipcode.invalid_format_type_string') );
         }
+
     }
 
 
@@ -52,11 +55,13 @@ class ZipCodeInfo implements ZipCodeInfoContract {
      */
     public function getArray()
     {
+
         if (!is_null($this->valueJson))
         {
 		    return json_decode($this->getJson(), true);
         }
         return null;
+
     }
 
     /**
@@ -66,11 +71,13 @@ class ZipCodeInfo implements ZipCodeInfoContract {
      */
     public function getObject()
     {
+
         if (!is_null($this->valueJson))
         {
 	   	    return json_decode($this->getJson(), false);
         }   
         return null;
+
     }
 	
     /**     
@@ -79,7 +86,8 @@ class ZipCodeInfo implements ZipCodeInfoContract {
      * @return bool
      */
     private function json_validate_zipcode() 
-    {        
+    {
+
         if (is_string($this->valueJson)) 
         {
             $ret = @json_decode($this->valueJson, true);            
@@ -93,6 +101,8 @@ class ZipCodeInfo implements ZipCodeInfoContract {
                     isset($ret['ibge'])
                    );
         }
+
         return false;
+
     }
 }

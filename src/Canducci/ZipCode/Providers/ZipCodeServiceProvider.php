@@ -5,11 +5,12 @@ use Illuminate\Support\ServiceProvider;
 
 class ZipCodeServiceProvider extends ServiceProvider {
 
-    /**
-     *
-     */
-    public function boot(){
-        $this->loadTranslationsFrom(__DIR__.'/../../../lang', 'artesaos-zipcode');
+
+    public function boot()
+	{
+
+        $this->loadTranslationsFrom(__DIR__.'/../../../lang', 'canducci-zipcode');
+
     }
 
 	/**
@@ -23,12 +24,16 @@ class ZipCodeServiceProvider extends ServiceProvider {
 					
 		if (isset($this->app['GuzzleHttp\ClientInterface']) === false) 
 		{
+
 			$this->app->bind('GuzzleHttp\ClientInterface', 'GuzzleHttp\Client');
+
 		}
 
-		$this->app->bind('Artesaos\ZipCode\Contracts\ZipCodeContract', function($app)
-		{			
+		$this->app->bind('Canducci\ZipCode\Contracts\ZipCodeContract', function($app)
+		{
+
 			return new ZipCode($app['cache'], $app['GuzzleHttp\ClientInterface']);
+
 		});
 		
 	}
