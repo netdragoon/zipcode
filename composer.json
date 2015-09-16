@@ -3,7 +3,7 @@
   "type": "library",
   "description": "ZipCode From Brazil",
   "keywords": ["cep","zip","zipcode","cep from brazil","laravel5", "Canducci"],
-  "homepage": "https://github.com/canducci/zipcode",
+  "homepage": "https://github.com/diasfulvio/zipcode",
   "license": "MIT",
   "authors": [
     {
