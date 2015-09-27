@@ -9,6 +9,7 @@ include $dir2;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Client;
 
+
 class ZipCodeTest extends TestCase
 {
     use Canducci\ZipCode\ZipCodeTrait;
