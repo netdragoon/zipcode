@@ -58,11 +58,16 @@ class ZipCodeInfo implements ZipCodeInfoContract {
 
         if (!is_null($this->valueJson))
         {
+<<<<<<< HEAD
 
 		    return json_decode($this->getJson(), true);
 
         }
 
+=======
+		    return json_decode($this->getJson(), true);
+        }
+>>>>>>> e68d86f286d5fdd55122bb467875cb5ce9d51c02
         return null;
 
     }
@@ -77,11 +82,16 @@ class ZipCodeInfo implements ZipCodeInfoContract {
 
         if (!is_null($this->valueJson))
         {
+<<<<<<< HEAD
 
 	   	    return json_decode($this->getJson(), false);
 
         }
 
+=======
+	   	    return json_decode($this->getJson(), false);
+        }   
+>>>>>>> e68d86f286d5fdd55122bb467875cb5ce9d51c02
         return null;
 
     }
