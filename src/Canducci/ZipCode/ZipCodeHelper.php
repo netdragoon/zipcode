@@ -1,4 +1,4 @@
-<?php namespace {
+<?php
 
     if (!function_exists('zipcode'))
     {
@@ -20,5 +20,3 @@
         }
 
     }
-	
-}
