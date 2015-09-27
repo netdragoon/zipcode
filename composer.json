@@ -23,7 +23,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Artesaos\\ZipCode\\": "src/Canducci/ZipCode/"
+      "Canducci\\ZipCode\\": "src/Canducci/ZipCode/"
     },
     "files":[
       "src/Canducci/ZipCode/ZipCodeHelper.php"
