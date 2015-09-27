@@ -26,7 +26,8 @@
       "Canducci\\ZipCode\\": "src/Canducci/ZipCode/"
     },
     "files":[
-      "src/Canducci/ZipCode/ZipCodeHelper.php"
+      "src/Canducci/ZipCode/ZipCodeHelper.php",
+      "src/Canducci/ZipCode/ZipCodeAddressHelper.php"
     ]
   }
 }
