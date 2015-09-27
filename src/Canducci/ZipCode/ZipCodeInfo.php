@@ -2,6 +2,7 @@
 
 use Canducci\ZipCode\Contracts\ZipCodeInfoContract;
 
+
 class ZipCodeInfo implements ZipCodeInfoContract {
 
     /**
@@ -105,11 +106,32 @@ class ZipCodeInfo implements ZipCodeInfoContract {
                     isset($ret['bairro']) &&
                     isset($ret['localidade']) &&
                     isset($ret['uf']) &&
-                    isset($ret['ibge'])
-                   );
+                    isset($ret['ibge']) &&
+                    isset($ret['gia']));
         }
 
         return false;
+
+    }
+
+    /**
+     * @return ZipCodeItem
+     */
+    public function getZipCodeItem()
+    {
+
+        $ret = $this->getArray();
+
+        return new ZipCodeItem(
+            $ret['cep'],
+            $ret['logradouro'],
+            $ret['complemento'],
+            $ret['bairro'],
+            $ret['localidade'],
+            $ret['uf'],
+            $ret['ibge'],
+            $ret['gia']
+        );
 
     }
 }

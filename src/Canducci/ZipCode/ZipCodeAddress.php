@@ -16,7 +16,9 @@ class ZipCodeAddress implements ZipCodeAddressContract {
      */
     public function __construct(ClientInterface $clientInterface)
     {
+
         $this->clientInterface = $clientInterface;
+
     }
 
     /**
@@ -25,7 +27,6 @@ class ZipCodeAddress implements ZipCodeAddressContract {
      * @param $address
      * @return ZipCodeAddressInfo
      * @throws ZipCodeException
-     * @internal param $type
      */
     public function find($uf, $city, $address)
     {

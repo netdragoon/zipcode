@@ -28,4 +28,9 @@ interface ZipCodeAddressInfoContract {
      */
     public function count();
 
+    /**
+     * @return Array of ZipCodeItem
+     */
+    public function getZipCodeItem();
+
 }

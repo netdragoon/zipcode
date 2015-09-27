@@ -21,6 +21,12 @@ interface ZipCodeInfoContract {
      *
      * @return \stdClass
      */
-    public function getObject();   
+    public function getObject();
+
+
+    /**
+     * @return ZipCodeItem
+     */
+    public function getZipCodeItem();
     
 }

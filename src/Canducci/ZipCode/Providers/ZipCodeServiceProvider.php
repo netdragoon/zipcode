@@ -21,15 +21,15 @@ class ZipCodeServiceProvider extends ServiceProvider {
      */
 	public function register()
 	{
-					
+
 		if (isset($this->app['GuzzleHttp\ClientInterface']) === false) 
 		{
 
-			$this->app->bind('GuzzleHttp\ClientInterface', 'GuzzleHttp\Client');
+			$this->app->singleton('GuzzleHttp\ClientInterface', 'GuzzleHttp\Client');
 
 		}
 
-		$this->app->bind('Canducci\ZipCode\Contracts\ZipCodeContract', function($app)
+		$this->app->singleton('Canducci\ZipCode\Contracts\ZipCodeContract', function($app)
 		{
 
 			return new ZipCode($app['cache'], $app['GuzzleHttp\ClientInterface']);
