@@ -11,7 +11,7 @@ class ZipCodeAddressServiceProvider extends ServiceProvider {
     public function boot()
     {
 
-        //$this->loadTranslationsFrom(__DIR__.'/../../../lang', 'canducci-zipcode');
+        $this->loadTranslationsFrom(__DIR__.'/../../../lang', 'canducci-zipcodeaddress');
 
     }
 

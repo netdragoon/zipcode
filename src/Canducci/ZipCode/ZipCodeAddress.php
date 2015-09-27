@@ -2,6 +2,7 @@
 
 use Canducci\ZipCode\Contracts\ZipCodeAddressContract;
 use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Exception\ClientException;
 
 class ZipCodeAddress implements ZipCodeAddressContract {
 
@@ -22,28 +23,69 @@ class ZipCodeAddress implements ZipCodeAddressContract {
      * @param $uf
      * @param $city
      * @param $address
-     * @param $type
-     * @return mixed|void
+     * @return ZipCodeAddressInfo
+     * @throws ZipCodeException
+     * @internal param $type
      */
     public function find($uf, $city, $address)
     {
 
-        $response = $this->clientInterface->get($this->url($uf, $city, $address, 'json'));
+        $message = '';
+        if (strlen($uf) < 2)
+        {
+            $message .= PHP_EOL . trans('canducci-zipcodeaddress::zipcodeaddress.invalid_uf');
+        }
 
-        if ($response->getStatusCode() === 200)
+        if (strlen($city) < 3)
+        {
+            $message .= PHP_EOL . trans('canducci-zipcodeaddress::zipcodeaddress.invalid_city');
+        }
+
+        if (strlen($address) < 3)
+        {
+            $message .= PHP_EOL . trans('canducci-zipcodeaddress::zipcodeaddress.invalid_address');
+        }
+
+        if ($message != '')
         {
 
-            return new ZipCodeAddressInfo(json_encode($response->json(), JSON_PRETTY_PRINT));
+            throw new ZipCodeException($message);
 
         }
 
-        return [];
+        try
+        {
+
+            $response = $this->clientInterface->get($this->url($uf, $city, $address, 'json'));
+
+            if ($response->getStatusCode() === 200)
+            {
+
+                return new ZipCodeAddressInfo(json_encode($response->json(), JSON_PRETTY_PRINT));
+
+            }
+
+            throw new ZipCodeException('Request inválid', $response->getStatusCode());
+
+        }
+        catch(ClientException $e)
+        {
+
+            throw new ZipCodeException($e->getMessage(), $e->getCode(), $e->getPrevious());
+
+        }
 
     }
 
+    /**
+     * @param $uf
+     * @param $city
+     * @param $address
+     * @param $type
+     * @return string
+     */
     protected function url($uf, $city, $address, $type)
     {
-
 
         return sprintf('viacep.com.br/ws/%s/%s/%s/%s/',
             strtolower($uf),

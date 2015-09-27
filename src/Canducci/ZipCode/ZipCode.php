@@ -52,7 +52,6 @@ class ZipCode implements ZipCodeContract {
      */
     public function find($value, $renew = false)
     {
-
         $message = '';
         if (is_string($value))
         {
@@ -92,8 +91,11 @@ class ZipCode implements ZipCodeContract {
             {
                 return null;
             }
+
             return new ZipCodeInfo($valueInfo);
-        }        
+
+        }
+
         throw new ZipCodeException($message);
 
     }
@@ -107,7 +109,8 @@ class ZipCode implements ZipCodeContract {
     private function getZipCodeInfo()
     {
 
-        $this->renew();       
+        $this->renew();
+
         if ($this->cacheManager->has('zipcode_'.$this->value))
         {            
             $getCache = $this->cacheManager->get('zipcode_'.$this->value);            
