@@ -15,9 +15,7 @@ class ZipCodeAddress implements ZipCodeAddressContract {
      */
     public function __construct(ClientInterface $clientInterface)
     {
-
         $this->clientInterface = $clientInterface;
-
     }
 
     /**
@@ -27,8 +25,6 @@ class ZipCodeAddress implements ZipCodeAddressContract {
      * @param $type
      * @return mixed|void
      */
-
-
     public function find($uf, $city, $address, $type)
     {
 
@@ -36,7 +32,6 @@ class ZipCodeAddress implements ZipCodeAddressContract {
 
         if ($response->getStatusCode() === 200)
         {
-
 
             return new ZipCodeAddressInfo(json_encode($response->json(), JSON_PRETTY_PRINT));
 
@@ -56,9 +51,6 @@ class ZipCodeAddress implements ZipCodeAddressContract {
             strtolower($address),
             strtolower($type)
         );
-
-        return sprintf('viacep.com.br/ws/%s/%s/%s/%s/', $uf, $city, $address, $type);
-
 
     }
 
