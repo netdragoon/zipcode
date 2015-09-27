@@ -9,10 +9,10 @@ trait ZipCodeAddressTrait {
      * @param bool $renew
      * @return Canducci\ZipCode\ZipCodeAddressInfo
      */
-    public function zipcodeaddress($uf, $city, $address, $type)
+    public function zipcodeaddress($uf, $city, $address)
     {
 
-        return zipcodeaddress($uf, $city, $address, $type);
+        return zipcodeaddress($uf, $city, $address);
 
     }
 }

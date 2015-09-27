@@ -25,10 +25,10 @@ class ZipCodeAddress implements ZipCodeAddressContract {
      * @param $type
      * @return mixed|void
      */
-    public function find($uf, $city, $address, $type)
+    public function find($uf, $city, $address)
     {
 
-        $response = $this->clientInterface->get($this->url($uf, $city, $address, $type));
+        $response = $this->clientInterface->get($this->url($uf, $city, $address, 'json'));
 
         if ($response->getStatusCode() === 200)
         {

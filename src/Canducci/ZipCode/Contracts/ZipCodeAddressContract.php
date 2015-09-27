@@ -9,6 +9,6 @@ interface ZipCodeAddressContract {
      * @param $type
      * @return mixed
      */
-    public function find($uf, $city, $address, $type);
+    public function find($uf, $city, $address);
 
 }
