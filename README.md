@@ -122,7 +122,7 @@ if ($zipCodeInfo)
         "uf": "SP",
         "ibge": "3550308", 
         "complemento": ""
-		"gia": 1000
+		"gia": 1004
     }
 }
 ```
@@ -143,7 +143,7 @@ if ($zipCodeInfo)
         [uf] => SP
         [ibge] => 3550308,
         [complemento] => 
-		[gia] => 1000
+		[gia] => 1004
     )
 }
 ```
@@ -164,7 +164,7 @@ if ($zipCodeInfo)
         [uf] => SP
         [ibge] => 3550308
         [complemento] => 
-		[gia] => 1000
+		[gia] => 1004
     )
 }
 ```
@@ -186,7 +186,7 @@ if ($zipCodeInfo)
         [uf] => SP
         [ibge] => 3550308
         [complemento] => 
-		[gia] => 1000
+		[gia] => 1004
     )
 }
 ```
