@@ -43,6 +43,7 @@ class ZipCodeAddress implements ZipCodeAddressContract {
     {
 
         return sprintf('viacep.com.br/ws/%s/%s/%s/%s/', $uf, $city, $address, $type);
-        
+
     }
+
 }
