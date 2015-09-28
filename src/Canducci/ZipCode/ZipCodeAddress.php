@@ -87,6 +87,12 @@ class ZipCodeAddress implements ZipCodeAddressContract {
      */
     protected function url($uf, $city, $address, $type)
     {
+        
+        $this->clean($uf);
+        
+        $this->clean($city);
+        
+        $this->clean($address);
 
         return sprintf('viacep.com.br/ws/%s/%s/%s/%s/',
             strtolower($uf),
@@ -94,6 +100,44 @@ class ZipCodeAddress implements ZipCodeAddressContract {
             strtolower($address),
             strtolower($type)
         );
+
+    }
+
+    protected function clean(&$value)
+    {        
+
+        $map = array(
+            'á' => 'a',
+            'à' => 'a',
+            'ã' => 'a',
+            'â' => 'a',
+            'é' => 'e',
+            'ê' => 'e',
+            'í' => 'i',
+            'ó' => 'o',
+            'ô' => 'o',
+            'õ' => 'o',
+            'ú' => 'u',
+            'ü' => 'u',
+            'ç' => 'c',
+            'Á' => 'A',
+            'À' => 'A',
+            'Ã' => 'A',
+            'Â' => 'A',
+            'É' => 'E',
+            'Ê' => 'E',
+            'Í' => 'I',
+            'Ó' => 'O',
+            'Ô' => 'O',
+            'Õ' => 'O',
+            'Ú' => 'U',
+            'Ü' => 'U',
+            'Ç' => 'C'
+        );
+
+        $value = strtr($value, $map);
+
+        return $value;
 
     }
 
