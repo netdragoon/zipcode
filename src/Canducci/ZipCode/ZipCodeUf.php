@@ -60,7 +60,7 @@ abstract class ZipCodeUf
     public static function lists()
     {
 
-        $rf   = new \ReflectionClass("Canducci\ZipCode\ZipCodeUf");
+        $rf = new \ReflectionClass("Canducci\ZipCode\ZipCodeUf");
 
         $data = $rf->getConstants();
 
