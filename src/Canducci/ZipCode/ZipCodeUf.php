@@ -57,4 +57,17 @@ abstract class ZipCodeUf
 
     const TO = 'to';
 
+    public static function lists()
+    {
+
+        $rf   = new \ReflectionClass("Canducci\ZipCode\ZipCodeUf");
+
+        $data = $rf->getConstants();
+
+        unset($rf);
+
+        return $data;
+
+    }
+
 }
