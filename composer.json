@@ -2,13 +2,13 @@
   "name": "canducci/zipcode",
   "type": "library",
   "description": "ZipCode From Brazil",
-  "keywords": ["cep","zip","zipcode","cep from brazil","laravel5", "Canducci"],
-  "homepage": "https://github.com/diasfulvio/zipcode",
+  "keywords": ["cep","zip","zipcode","cep from brazil","laravel5"],
+  "homepage": "https://github.com/netdragoon/zipcode",
   "license": "MIT",
   "authors": [
     {
-      "name": "Fúlvio Cezar Canducci Dias",
-      "email": "dias.fulvio@gmail.com",
+      "name": "NETDragoon",
+      "email": "netdragoon@outlook.com",
       "role": "Developer"
     }
   ],
