@@ -1,4 +1,4 @@
-# CANDUCCI ZIPCODE (CEP BRASIL)
+# CANDUCCI ZIPCODE
 
 __Web Service provided by http://viacep.com.br/__
 
@@ -16,7 +16,9 @@ __Web Service provided by http://viacep.com.br/__
 In the `require` key of `composer.json` file add the following
 
 ```PHP
+
 "canducci/zipcode": "1.0.*"
+
 ```
 
 Run the Composer update comand
@@ -37,6 +39,7 @@ In your `config/app.php` add `'Canducci\ZipCode\Providers\ZipCodeServiceProvider
 At the end of `config/app.php` add `'ZipCode' => 'Canducci\ZipCode\Facade\ZipCode'` and add `'Address'` => 'Canducci\ZipCode\Facades\ZipCodeAddress'  to the `aliases` array:
 
 ```PHP
+
 'aliases' => array(
     ...,
     'ZipCode'   => Canducci\ZipCode\Facades\ZipCode::class,
@@ -55,38 +58,52 @@ __Package ZipCode__
 
 __Add namespace:__
 ```PHP
+
 use Canducci\ZipCode\Facades\ZipCode;
+
 ```
 __Code Example__
 ```PHP
+
 $zipCodeInfo = ZipCode::find('01414-001');
+
 ```
 
 ##Helper
 
 ```PHP
+
 $zipCodeInfo = zipcode('01414000');
+
 ```
 
 ##Injection
 __Add Namespace__
 ```PHP
+
 use Canducci\ZipCode\Contracts\ZipCodeContract;
+
 ```
 __Code Example__
 ```PHP
+
 public function index(ZipCodeContract $zipcode)
 {
+
       $zipCodeInfo = $zipcode->find('01414000');
+      
 ```
 
 ##Traits
 __Add Namespace__
 ```PHP
+
 use Canducci\ZipCode\ZipCodeTrait;
+
 ```
 __Code Example__
 ```PHP
+
 class WelcomeController extends Controller {
 
 	use ZipCodeTrait;
@@ -94,14 +111,20 @@ class WelcomeController extends Controller {
 	public function index()
 	{
       		$zipCodeInfo =	$this->zipcode('01414000');
+      		
 ```
 ## Summary of How to Use
 __Code__
 ```PHP 
+
 $zipCodeInfo = ZipCode::find('01414000', false); //Facade
+
 $zipCodeInfo = $zipcode->find('01414000', false); //Contracts
+
 $zipCodeInfo = zipcode('01414000', false); // Helper
+
 $zipCodeInfo = $this->zipcode('01414000', true); //Traist
+
 ```
 __Return__
 
@@ -112,8 +135,10 @@ __Methods ZipCodeInfo__:
 - _Json => `getJson()`_ 
 
 ```PHP 
+
 if ($zipCodeInfo) 
 {
+
     $zipCodeInfo->getJson();
     
     {
@@ -126,14 +151,17 @@ if ($zipCodeInfo)
         "complemento": ""
 		"gia": 1004
     }
+    
 }
 ```
 
 - _Array => `getArray()`_
 
 ```PHP   
+
 if ($zipCodeInfo) 
 {
+
     $zipCodeInfo->getArray();
     
     Array
@@ -147,14 +175,17 @@ if ($zipCodeInfo)
         [complemento] => 
 		[gia] => 1004
     )
+    
 }
 ```
 
 - _Object => `getObject()`_ 
 
 ```PHP    
+
 if ($zipCodeInfo) 
 {
+
     $zipCodeInfo->getObject();
     
     stdClass Object
@@ -168,15 +199,19 @@ if ($zipCodeInfo)
         [complemento] => 
 		[gia] => 1004
     )
+    
 }
 ```
 
 ##Renew item from cache
 
 ```PHP
-$zipCodeInfo  = ZipCode::find('01414001', true);			
+
+$zipCodeInfo  = ZipCode::find('01414001', true);
+
 if ($zipCodeInfo) 
 {
+
     $zipCodeInfo->getObject();
    
     stdClass Object
@@ -191,6 +226,7 @@ if ($zipCodeInfo)
 		[gia] => 1004
     )
 }
+
 ```
 
 __Package Address__
@@ -200,11 +236,15 @@ ___Obs: follows the same coding of ZipCode___
 ###To add to the list of UF:
 
 ```PHP
+
 use Canducci\ZipCode\ZipCodeUf;
+
 ```
 
 ```PHP
+
 $lists = ZipCodeUf::lists();
+
 ```
 
 ###To search for all zip of a particular city , uf and address
@@ -213,8 +253,11 @@ $lists = ZipCodeUf::lists();
 public function get(Request $request)
 {
     $uf = $request->get('uf');
+    
     $city = $request->get('cidade');
+    
     $address = $request->get('endereco')
+    
     $zipcodeaddressinfo = zipcodeaddress($uf,$city,$address);
 
     if ($zipcodeaddressinfo)
@@ -223,6 +266,7 @@ public function get(Request $request)
         return $zipcodeaddressinfo->getJson();
 
     }
+    
     return Response::json(['error' => 1]);
 
 }
