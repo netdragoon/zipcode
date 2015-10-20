@@ -2,7 +2,7 @@
 
 __Web Service provided by http://viacep.com.br/__
 
-[![Canducci Cep](http://i666.photobucket.com/albums/vv25/netdragoon/cep_zpsoqtae5hr.png)](https://packagist.org/packages/canducci/cep)
+[![Canducci Cep](https://fulviocanducci.files.wordpress.com/2015/01/1948132_691123557596602_6995479600312612395_n.png)](https://packagist.org/packages/canducci/cep)
 
 
 ### Demo
@@ -23,24 +23,24 @@ Run the Composer update comand
 
     $ composer update
 
-In your `config/app.php` add `'Canducci\ZipCode\Providers\ZipCodeServiceProvider'` to the end of the `providers` array:
+In your `config/app.php` add `'Canducci\ZipCode\Providers\ZipCodeServiceProvider'` and `'Canducci\ZipCode\Providers\ZipCodeAddressServiceProvider'` to the end of the `providers` array:
 
 ```PHP
 'providers' => array(
     ...,
-    'Illuminate\Workbench\WorkbenchServiceProvider',
-    'Canducci\ZipCode\Providers\ZipCodeServiceProvider',
+    Canducci\ZipCode\Providers\ZipCodeServiceProvider::class,
+    Canducci\ZipCode\Providers\ZipCodeAddressServiceProvider::class,
 
 ),
 ```
 
-At the end of `config/app.php` add `'ZipCode' => 'Canducci\ZipCode\Facade\ZipCode'` to the `aliases` array:
+At the end of `config/app.php` add `'ZipCode' => 'Canducci\ZipCode\Facade\ZipCode'` and add `'Address'` => 'Canducci\ZipCode\Facades\ZipCodeAddress'  to the `aliases` array:
 
 ```PHP
 'aliases' => array(
     ...,
-    'View'       => 'Illuminate\Support\Facades\View',
-    'ZipCode'    => 'Canducci\ZipCode\Facades\ZipCode',
+    'ZipCode'   => Canducci\ZipCode\Facades\ZipCode::class,
+    'Address'   => Canducci\ZipCode\Facades\ZipCodeAddress::class,
 
 ),
 ```
@@ -48,6 +48,8 @@ At the end of `config/app.php` add `'ZipCode' => 'Canducci\ZipCode\Facade\ZipCod
 ##How to Use
 
 To use is very simple, pass the ZIP and calls the various types of returns, like this:
+
+__Package ZipCode__
 
 ##Facade
 
@@ -188,5 +190,37 @@ if ($zipCodeInfo)
         [complemento] => 
 		[gia] => 1004
     )
+}
+```
+
+__Package Address__
+
+___Obs: follows the same coding___
+
+###To add to the list of UF:
+
+```PHP
+use Canducci\ZipCode\ZipCodeUf;
+```
+
+```PHP
+$lists = ZipCodeUf::lists();
+```
+
+###To search for all zip of a particular city , uf and address
+
+```PHP
+public function get(Request $request)
+{
+    $zipcodeaddressinfo = zipcodeaddress($request->get('uf'),$request->get('cidade'), $request->get('endereco'));
+
+    if ($zipcodeaddressinfo)
+    {
+
+        return $zipcodeaddressinfo->getJson();
+
+    }
+    return Response::json(['error' => 1]);
+
 }
 ```
