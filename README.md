@@ -212,7 +212,10 @@ $lists = ZipCodeUf::lists();
 ```PHP
 public function get(Request $request)
 {
-    $zipcodeaddressinfo = zipcodeaddress($request->get('uf'),$request->get('cidade'), $request->get('endereco'));
+    $uf = $request->get('uf');
+    $city = $request->get('cidade');
+    $address = $request->get('endereco')
+    $zipcodeaddressinfo = zipcodeaddress($uf,$city,$address);
 
     if ($zipcodeaddressinfo)
     {
