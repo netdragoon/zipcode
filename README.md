@@ -195,7 +195,7 @@ if ($zipCodeInfo)
 
 __Package Address__
 
-___Obs: follows the same coding___
+___Obs: follows the same coding of ZipCode___
 
 ###To add to the list of UF:
 
