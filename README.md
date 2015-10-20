@@ -16,7 +16,6 @@ __Web Service provided by http://viacep.com.br/__
 In the `require` key of `composer.json` file add the following
 
 ```PHP
-
 "canducci/zipcode": "1.0.*"
 
 ```
@@ -46,6 +45,7 @@ At the end of `config/app.php` add `'ZipCode' => 'Canducci\ZipCode\Facade\ZipCod
     'Address'   => Canducci\ZipCode\Facades\ZipCodeAddress::class,
 
 ),
+
 ```
 
 ##How to Use
@@ -58,13 +58,11 @@ __Package ZipCode__
 
 __Add namespace:__
 ```PHP
-
 use Canducci\ZipCode\Facades\ZipCode;
 
 ```
 __Code Example__
 ```PHP
-
 $zipCodeInfo = ZipCode::find('01414-001');
 
 ```
@@ -72,7 +70,6 @@ $zipCodeInfo = ZipCode::find('01414-001');
 ##Helper
 
 ```PHP
-
 $zipCodeInfo = zipcode('01414000');
 
 ```
@@ -80,13 +77,11 @@ $zipCodeInfo = zipcode('01414000');
 ##Injection
 __Add Namespace__
 ```PHP
-
 use Canducci\ZipCode\Contracts\ZipCodeContract;
 
 ```
 __Code Example__
 ```PHP
-
 public function index(ZipCodeContract $zipcode)
 {
 
@@ -97,7 +92,6 @@ public function index(ZipCodeContract $zipcode)
 ##Traits
 __Add Namespace__
 ```PHP
-
 use Canducci\ZipCode\ZipCodeTrait;
 
 ```
@@ -111,6 +105,7 @@ class WelcomeController extends Controller {
 	public function index()
 	{
       		$zipCodeInfo =	$this->zipcode('01414000');
+      	
       		
 ```
 ## Summary of How to Use
@@ -124,6 +119,7 @@ $zipCodeInfo = $zipcode->find('01414000', false); //Contracts
 $zipCodeInfo = zipcode('01414000', false); // Helper
 
 $zipCodeInfo = $this->zipcode('01414000', true); //Traist
+
 
 ```
 __Return__
@@ -153,6 +149,7 @@ if ($zipCodeInfo)
     }
     
 }
+
 ```
 
 - _Array => `getArray()`_
@@ -177,6 +174,7 @@ if ($zipCodeInfo)
     )
     
 }
+
 ```
 
 - _Object => `getObject()`_ 
@@ -201,6 +199,7 @@ if ($zipCodeInfo)
     )
     
 }
+
 ```
 
 ##Renew item from cache
@@ -236,7 +235,6 @@ ___Obs: follows the same coding of ZipCode___
 ###To add to the list of UF:
 
 ```PHP
-
 use Canducci\ZipCode\ZipCodeUf;
 
 ```
@@ -250,6 +248,7 @@ $lists = ZipCodeUf::lists();
 ###To search for all zip of a particular city , uf and address
 
 ```PHP
+
 public function get(Request $request)
 {
     $uf = $request->get('uf');
@@ -270,4 +269,5 @@ public function get(Request $request)
     return Response::json(['error' => 1]);
 
 }
+
 ```
