@@ -4,6 +4,10 @@ __Web Service provided by http://viacep.com.br/__
 
 [![Canducci Cep](https://fulviocanducci.files.wordpress.com/2015/01/1948132_691123557596602_6995479600312612395_n.png)](https://packagist.org/packages/canducci/cep)
 
+[![Build Status](https://travis-ci.org/netdragoon/zipcode.svg?branch=master)](https://travis-ci.org/netdragoon/zipcode)
+[![Packagist](https://img.shields.io/packagist/dt/canducci/zipcode.svg?style=flat)](https://packagist.org/packages/canducci/zipcode)
+[![Packagist](https://img.shields.io/packagist/l/canducci/zipcode.svg)](https://packagist.org/packages/canducci/zipcode)
+[![Packagist](https://img.shields.io/packagist/v/canducci/zipcode.svg)](https://packagist.org/packages/canducci/zipcode)
 
 ### Demo
 
