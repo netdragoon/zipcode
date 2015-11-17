@@ -7,7 +7,7 @@ __Web Service provided by http://viacep.com.br/__
 [![Build Status](https://travis-ci.org/netdragoon/zipcode.svg?branch=master)](https://travis-ci.org/netdragoon/zipcode)
 [![Packagist](https://img.shields.io/packagist/dt/canducci/zipcode.svg?style=flat)](https://packagist.org/packages/canducci/zipcode)
 [![Packagist](https://img.shields.io/packagist/l/canducci/zipcode.svg)](https://packagist.org/packages/canducci/zipcode)
-[![Packagist](https://img.shields.io/packagist/v/canducci/zipcode.svg)](https://packagist.org/packages/canducci/zipcode)
+[![Packagist](https://img.shields.io/packagist/v/canducci/zipcode.svg?label=version)](https://packagist.org/packages/canducci/zipcode)
 
 ### Demo
 
