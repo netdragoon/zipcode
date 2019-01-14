@@ -26,7 +26,9 @@ In the `require` key of `composer.json` file add the following
 
 Run the Composer update comand
 
-    $ composer update
+```bash
+$ composer update
+```
 
 In your `config/app.php` add `'Canducci\ZipCode\Providers\ZipCodeServiceProvider'` and `'Canducci\ZipCode\Providers\ZipCodeAddressServiceProvider'` to the end of the `providers` array:
 
@@ -52,13 +54,13 @@ At the end of `config/app.php` add `'ZipCode' => 'Canducci\ZipCode\Facade\ZipCod
 
 ```
 
-##How to Use
+## How to Use
 
 To use is very simple, pass the ZIP and calls the various types of returns, like this:
 
 __Package ZipCode__
 
-##Facade
+## Facade
 
 __Add namespace:__
 ```PHP
@@ -71,14 +73,14 @@ $zipCodeInfo = ZipCode::find('01414-001');
 
 ```
 
-##Helper
+## Helper
 
 ```PHP
 $zipCodeInfo = zipcode('01414000');
 
 ```
 
-##Injection
+## Injection
 __Add Namespace__
 ```PHP
 use Canducci\ZipCode\Contracts\ZipCodeContract;
@@ -93,7 +95,7 @@ public function index(ZipCodeContract $zipcode)
       
 ```
 
-##Traits
+## Traits
 __Add Namespace__
 ```PHP
 use Canducci\ZipCode\ZipCodeTrait;
@@ -206,7 +208,7 @@ if ($zipCodeInfo)
 
 ```
 
-##Renew item from cache
+## Renew item from cache
 
 ```PHP
 
@@ -236,7 +238,7 @@ __Package Address__
 
 ___Obs: follows the same coding of ZipCode___
 
-###To add to the list of UF:
+### To add to the list of UF:
 
 ```PHP
 use Canducci\ZipCode\ZipCodeUf;
@@ -249,7 +251,7 @@ $lists = ZipCodeUf::lists();
 
 ```
 
-###To search for all zip of a particular city , uf and address
+### To search for all zip of a particular city , uf and address
 
 ```PHP
 
