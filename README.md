@@ -20,21 +20,21 @@ composer require canducci/zipcode
 Add these classes to the end of `providers` array in `config/app.php`:
 
 ```php
-'providers' => array(
+'providers' => [
     // ...,
     Canducci\ZipCode\Providers\ZipCodeServiceProvider::class,
     Canducci\ZipCode\Providers\ZipCodeAddressServiceProvider::class,
-),
+],
 ```
 
 And add those to the `aliases` array:
 
 ```php
-'aliases' => array(
+'aliases' => [
     // ...,
     'ZipCode'   => Canducci\ZipCode\Facades\ZipCode::class,
     'Address'   => Canducci\ZipCode\Facades\ZipCodeAddress::class,
-),
+],
 ```
 
 ## How to Use It
