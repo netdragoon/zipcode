@@ -108,7 +108,8 @@ class ZipCodeAddressInfo implements ZipCodeAddressInfoContract {
                 $ret['localidade'],
                 $ret['uf'],
                 $ret['ibge'],
-                $ret['gia']
+                $ret['gia'],
+                $ret['unidade']
             );
         }
         return $array;
