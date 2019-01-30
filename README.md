@@ -116,18 +116,14 @@ class WelcomeController extends Controller {
 ```
 ## Summary of How to Use
 __Code__
-```PHP 
 
+```PHP
 $zipCodeInfo = ZipCode::find('01414000', false); //Facade
-
 $zipCodeInfo = $zipcode->find('01414000', false); //Contracts
-
 $zipCodeInfo = zipcode('01414000', false); // Helper
-
 $zipCodeInfo = $this->zipcode('01414000', true); //Traist
-
-
 ```
+
 __Return__
 
 The return can be null or class instance ZipCodeInfo (`Canducci\ZipCode\ZipCodeInfo`)
@@ -137,12 +133,11 @@ __Methods ZipCodeInfo__:
 - _Json => `getJson()`_ 
 
 ```PHP 
-
 if ($zipCodeInfo) 
 {
 
-    $zipCodeInfo->getJson();
-    
+    $zipCodeInfo->getJson();   
+     
     {
         "cep": "01414-001",
         "logradouro": "Rua Haddock Lobo",
@@ -151,9 +146,9 @@ if ($zipCodeInfo)
         "uf": "SP",
         "ibge": "3550308", 
         "complemento": ""
-		"gia": 1004
-    }
-    
+        "gia": 1004,
+        "unidade": ""
+    }    
 }
 
 ```
@@ -161,7 +156,6 @@ if ($zipCodeInfo)
 - _Array => `getArray()`_
 
 ```PHP   
-
 if ($zipCodeInfo) 
 {
 
@@ -176,22 +170,19 @@ if ($zipCodeInfo)
         [uf] => SP
         [ibge] => 3550308,
         [complemento] => 
-		[gia] => 1004
+        [gia] => 1004
+        [unidade] => 
     )
     
 }
-
 ```
 
 - _Object => `getObject()`_ 
 
 ```PHP    
-
 if ($zipCodeInfo) 
 {
-
-    $zipCodeInfo->getObject();
-    
+    $zipCodeInfo->getObject();    
     stdClass Object
     (
         [cep] => 01414-001
@@ -200,10 +191,10 @@ if ($zipCodeInfo)
         [localidade] => São Paulo
         [uf] => SP
         [ibge] => 3550308
-        [complemento] => 
-		[gia] => 1004
-    )
-    
+        [complemento] =>
+        [gia] => 1004
+        [unidade] =>
+    )    
 }
 
 ```
@@ -211,14 +202,10 @@ if ($zipCodeInfo)
 ## Renew item from cache
 
 ```PHP
-
 $zipCodeInfo  = ZipCode::find('01414001', true);
-
 if ($zipCodeInfo) 
 {
-
-    $zipCodeInfo->getObject();
-   
+    $zipCodeInfo->getObject();   
     stdClass Object
     (
         [cep] => 01414-001
@@ -227,11 +214,11 @@ if ($zipCodeInfo)
         [localidade] => São Paulo
         [uf] => SP
         [ibge] => 3550308
-        [complemento] => 
-		[gia] => 1004
+        [complemento] =>
+        [gia] => 1004
+        [unidade] =>
     )
 }
-
 ```
 
 __Package Address__
@@ -242,38 +229,25 @@ ___Obs: follows the same coding of ZipCode___
 
 ```PHP
 use Canducci\ZipCode\ZipCodeUf;
-
 ```
 
 ```PHP
-
 $lists = ZipCodeUf::lists();
-
 ```
 
 ### To search for all zip of a particular city , uf and address
 
 ```PHP
-
 public function get(Request $request)
 {
-    $uf = $request->get('uf');
-    
-    $city = $request->get('cidade');
-    
-    $address = $request->get('endereco')
-    
+    $uf = $request->get('uf');    
+    $city = $request->get('cidade');    
+    $address = $request->get('endereco')    
     $zipcodeaddressinfo = zipcodeaddress($uf,$city,$address);
-
     if ($zipcodeaddressinfo)
     {
-
         return $zipcodeaddressinfo->getJson();
-
-    }
-    
+    }    
     return Response::json(['error' => 1]);
-
 }
-
 ```
