@@ -56,7 +56,7 @@ class ZipCodeInfo implements ZipCodeInfoContract {
      */
     public function getArray()
     {
-        if (!emtpy($this->valueJson))
+        if (!empty($this->valueJson))
         {
 		    return json_decode($this->valueJson, true);
         }
