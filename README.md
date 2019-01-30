@@ -20,7 +20,7 @@ __Web Service provided by http://viacep.com.br/__
 In the `require` key of `composer.json` file add the following
 
 ```PHP
-"canducci/zipcode": "2.0.1"
+"canducci/zipcode": "2.0.*"
 
 ```
 
