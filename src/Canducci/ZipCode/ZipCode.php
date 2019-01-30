@@ -143,7 +143,7 @@ class ZipCode implements ZipCodeContract {
             }           
             $this->renew = false;  
         }
-        return this;
+        return $this;
     }
 
     /**
