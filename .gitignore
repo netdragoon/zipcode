@@ -118,3 +118,6 @@ fabric.properties
 
 composer.phar
 .idea/php.xml
+.idea/*
+.idea/**/
+.idea

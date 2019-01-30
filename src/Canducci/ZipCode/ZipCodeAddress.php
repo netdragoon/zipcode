@@ -69,25 +69,19 @@ class ZipCodeAddress implements ZipCodeAddressContract
      */
     protected function url($uf, $city, $address, $type)
     {
-        
         $this->clean($uf);
-        
         $this->clean($city);
-        
         $this->clean($address);
-
         return sprintf('viacep.com.br/ws/%s/%s/%s/%s/',
             strtolower($uf),
             strtolower($city),
             strtolower($address),
             strtolower($type)
         );
-
     }
 
     protected function clean(&$value)
-    {        
-
+    {
         $map = array(
             'á' => 'a',
             'à' => 'a',
@@ -116,11 +110,7 @@ class ZipCodeAddress implements ZipCodeAddressContract
             'Ü' => 'U',
             'Ç' => 'C'
         );
-
         $value = strtr($value, $map);
-
         return $value;
-
     }
-
 }
