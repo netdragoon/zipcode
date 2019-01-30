@@ -53,7 +53,7 @@ class ZipCodeAddress implements ZipCodeAddressContract
             $response = $this->request->get($this->url($uf, $city, $address, 'json'));
             if ($response && $response->getStatusCode() === 200)
             {
-                return new ZipCodeAddressInfo(json_encode($response->getJson()));
+                return new ZipCodeAddressInfo($response->getJson());
             }
             throw new ZipCodeException('Request inválid', $response->getStatusCode());
         }
