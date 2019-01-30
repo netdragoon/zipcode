@@ -50,6 +50,7 @@ class ZipCode implements ZipCodeContract {
     public function find($value, $renew = false)
     {
         $message = '';
+
         if (is_string($value))
         {
             $value = str_replace('.', '', $value);
