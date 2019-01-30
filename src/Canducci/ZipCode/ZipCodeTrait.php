@@ -1,5 +1,9 @@
 <?php namespace Canducci\ZipCode;
 
+/**
+ * Trait ZipCodeTrait
+ * @package Canducci\ZipCode
+ */
 trait ZipCodeTrait {
 
     /**
@@ -12,8 +16,6 @@ trait ZipCodeTrait {
      */
     public function zipcode($value, $renew = false)
     {
-
         return zipcode($value, $renew);
-
     }
 }

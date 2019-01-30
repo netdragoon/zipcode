@@ -1,6 +1,9 @@
 <?php namespace Canducci\ZipCode;
 
-
+/**
+ * Class ZipCodeItem
+ * @package Canducci\ZipCode
+ */
 class ZipCodeItem {
 
     protected $cep;
@@ -11,8 +14,10 @@ class ZipCodeItem {
     protected $uf;
     protected $ibge;
     protected $gia;
+    protected $unidade;
 
     /**
+     * ZipCodeItem constructor.
      * @param $cep
      * @param $logradouro
      * @param $complemento
@@ -21,10 +26,10 @@ class ZipCodeItem {
      * @param $uf
      * @param $ibge
      * @param $gia
+     * @param $unidade
      */
-    public function __construct($cep, $logradouro, $complemento, $bairro, $localidade, $uf, $ibge, $gia)
+    public function __construct($cep, $logradouro, $complemento, $bairro, $localidade, $uf, $ibge, $gia, $unidade)
     {
-
         $this->cep = $cep;
         $this->logradouro = $logradouro;
         $this->complemento = $complemento;
@@ -33,9 +38,8 @@ class ZipCodeItem {
         $this->uf = $uf;
         $this->ibge = $ibge;
         $this->gia = $gia;
-
+        $this->unidade = $unidade;
     }
-
 
     /**
      * @return mixed
@@ -101,19 +105,29 @@ class ZipCodeItem {
         return $this->gia;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getUnidade()
+    {
+        return $this->unidade;
+    }
+
+    /**
+     * @param $name
+     * @return mixed
+     */
     function __get($name)
     {
-
         return $this->$name;
-
     }
 
+    /**
+     * @param $name
+     * @param $value
+     */
     function __set($name, $value)
     {
-
         $this->$name = $value;
-
     }
-
-
 }

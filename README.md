@@ -154,7 +154,8 @@ if ($zipCodeInfo)
         [uf] => SP
         [ibge] => 3550308,
         [complemento] =>
-        [gia] => 1004
+        [gia] => 1004,
+        [unidade] =>
     )
     */
 }
@@ -175,7 +176,8 @@ if ($zipCodeInfo)
         "uf": "SP",
         "ibge": "3550308",
         "complemento": ""
-        "gia": 1004
+        "gia": 1004,
+        "unidade": ""
     }
     */
 }
@@ -198,6 +200,7 @@ if ($zipCodeInfo)
         [ibge] => 3550308
         [complemento] =>
         [gia] => 1004
+        [unidade] =>
     )
     */
 }
@@ -211,16 +214,11 @@ if ($zipCodeInfo)
 public function get(Request $request)
 {
     $uf = $request->get('uf');
-
     $city = $request->get('cidade');
-
     $address = $request->get('endereco')
-
     $zipcodeaddressinfo = zipcodeaddress($uf, $city, $address);
-
     if ($zipcodeaddressinfo)
         return $zipcodeaddressinfo->getJson();
-
     return Response::json(['error' => 1]);
 }
 ```
