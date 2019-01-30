@@ -21,16 +21,11 @@ class ZipCodeAddressInfo implements ZipCodeAddressInfoContract {
                 throw new ZipCodeException( trans('canducci-zipcode::zipcode.invalid_format_type_string') );
 
             }
-
         }
         else
         {
-
             throw new ZipCodeException( trans('canducci-zipcode::zipcode.invalid_format_type_string') );
-
         }
-
-
     }
     /**
      * return JSON Javascript

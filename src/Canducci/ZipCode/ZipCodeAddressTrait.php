@@ -11,8 +11,6 @@ trait ZipCodeAddressTrait {
      */
     public function zipcodeaddress($uf, $city, $address)
     {
-
         return zipcodeaddress($uf, $city, $address);
-
     }
 }

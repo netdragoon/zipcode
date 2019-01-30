@@ -2,7 +2,6 @@
 
 use Canducci\ZipCode\Contracts\ZipCodeInfoContract;
 
-
 class ZipCodeInfo implements ZipCodeInfoContract {
 
     /**
@@ -33,7 +32,6 @@ class ZipCodeInfo implements ZipCodeInfoContract {
         }
 
     }
-
 
     /**
      * return JSON Javascript

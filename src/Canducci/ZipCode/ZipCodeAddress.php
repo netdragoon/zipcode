@@ -1,24 +1,21 @@
 <?php  namespace Canducci\ZipCode;
 
 use Canducci\ZipCode\Contracts\ZipCodeAddressContract;
-use GuzzleHttp\ClientInterface;
-use GuzzleHttp\Exception\ClientException;
 
-class ZipCodeAddress implements ZipCodeAddressContract {
+class ZipCodeAddress implements ZipCodeAddressContract
+{
+    /**
+     * @var ZipCodeRequest
+     */
+    private $request;
 
     /**
-     * @var $clientInterface (GuzzleHttp\ClientInterface)
+     * ZipCodeAddress constructor.
+     * @param ZipCodeRequest $request
      */
-    private $clientInterface;
-
-    /**
-     * @param ClientInterface $clientInterface
-     */
-    public function __construct(ClientInterface $clientInterface)
+    public function __construct(ZipCodeRequest $request)
     {
-
-        $this->clientInterface = $clientInterface;
-
+        $this->request = $request;
     }
 
     /**
@@ -30,50 +27,35 @@ class ZipCodeAddress implements ZipCodeAddressContract {
      */
     public function find($uf, $city, $address)
     {
-
         $message = '';
         if (strlen($uf) < 2)
         {
             $message .= PHP_EOL . trans('canducci-zipcodeaddress::zipcodeaddress.invalid_uf');
         }
-
         if (strlen($city) < 3)
         {
             $message .= PHP_EOL . trans('canducci-zipcodeaddress::zipcodeaddress.invalid_city');
         }
-
         if (strlen($address) < 3)
         {
             $message .= PHP_EOL . trans('canducci-zipcodeaddress::zipcodeaddress.invalid_address');
         }
-
         if ($message != '')
         {
-
             throw new ZipCodeException($message);
-
         }
-
         try
         {
-
-            $response = $this->clientInterface->get($this->url($uf, $city, $address, 'json'));
-
-            if ($response->getStatusCode() === 200)
+            $response = $this->request->get($this->url($uf, $city, $address, 'json'));
+            if ($response && $response->getStatusCode() === 200)
             {
-
-                return new ZipCodeAddressInfo(json_encode($response->json(), JSON_PRETTY_PRINT));
-
+                return new ZipCodeAddressInfo(json_encode($response->getJson()));
             }
-
             throw new ZipCodeException('Request inválid', $response->getStatusCode());
-
         }
         catch(ClientException $e)
         {
-
             throw new ZipCodeException($e->getMessage(), $e->getCode(), $e->getPrevious());
-
         }
 
     }
