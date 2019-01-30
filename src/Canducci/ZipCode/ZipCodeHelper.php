@@ -2,7 +2,6 @@
 
 if (!function_exists('zipcode'))
 {
-
     /**
      * @param $value
      * @param bool $renew

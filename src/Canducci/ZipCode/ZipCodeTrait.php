@@ -1,5 +1,9 @@
 <?php namespace Canducci\ZipCode;
 
+/**
+ * Trait ZipCodeTrait
+ * @package Canducci\ZipCode
+ */
 trait ZipCodeTrait {
 
     /**

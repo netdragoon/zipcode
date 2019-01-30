@@ -2,6 +2,10 @@
 
 use Canducci\ZipCode\Contracts\ZipCodeAddressContract;
 
+/**
+ * Class ZipCodeAddress
+ * @package Canducci\ZipCode
+ */
 class ZipCodeAddress implements ZipCodeAddressContract
 {
     /**
@@ -80,6 +84,10 @@ class ZipCodeAddress implements ZipCodeAddressContract
         );
     }
 
+    /**
+     * @param $value
+     * @return string
+     */
     protected function clean(&$value)
     {
         $map = array(

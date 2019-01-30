@@ -2,6 +2,10 @@
 
 use Canducci\ZipCode\Contracts\ZipCodeResponseContract;
 
+/**
+ * Class ZipCodeResponse
+ * @package Canducci\ZipCode
+ */
 class ZipCodeResponse implements ZipCodeResponseContract
 {
     private $json;

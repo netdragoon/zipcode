@@ -2,6 +2,10 @@
 
 use Canducci\ZipCode\Contracts\ZipCodeInfoContract;
 
+/**
+ * Class ZipCodeInfo
+ * @package Canducci\ZipCode
+ */
 class ZipCodeInfo implements ZipCodeInfoContract {
 
     /**
@@ -17,7 +21,6 @@ class ZipCodeInfo implements ZipCodeInfoContract {
      */
     public function __construct($valueJson) 
     {
-
         if (is_string($valueJson))
         {
             $this->valueJson = $valueJson;
@@ -30,7 +33,6 @@ class ZipCodeInfo implements ZipCodeInfoContract {
         {
             throw new ZipCodeException( trans('canducci-zipcode::zipcode.invalid_format_type_string') );
         }
-
     }
 
     /**
@@ -54,17 +56,11 @@ class ZipCodeInfo implements ZipCodeInfoContract {
      */
     public function getArray()
     {
-
         if (!is_null($this->valueJson))
         {
-
-
 		    return json_decode($this->getJson(), true);
-
         }
-
         return null;
-
     }
 
     /**
@@ -74,16 +70,11 @@ class ZipCodeInfo implements ZipCodeInfoContract {
      */
     public function getObject()
     {
-
         if (!is_null($this->valueJson))
         {
-
 	   	    return json_decode($this->getJson(), false);
-
         }
-
         return null;
-
     }
 	
     /**     
@@ -93,7 +84,6 @@ class ZipCodeInfo implements ZipCodeInfoContract {
      */
     private function json_validate_zipcode() 
     {
-
         if (is_string($this->valueJson)) 
         {
             $ret = @json_decode($this->valueJson, true);            
@@ -105,11 +95,10 @@ class ZipCodeInfo implements ZipCodeInfoContract {
                     isset($ret['localidade']) &&
                     isset($ret['uf']) &&
                     isset($ret['ibge']) &&
-                    isset($ret['gia']));
+                    isset($ret['gia'])) &&
+                    isset($ret['unidade']);
         }
-
         return false;
-
     }
 
     /**
@@ -117,9 +106,7 @@ class ZipCodeInfo implements ZipCodeInfoContract {
      */
     public function getZipCodeItem()
     {
-
         $ret = $this->getArray();
-
         return new ZipCodeItem(
             $ret['cep'],
             $ret['logradouro'],
@@ -128,8 +115,8 @@ class ZipCodeInfo implements ZipCodeInfoContract {
             $ret['localidade'],
             $ret['uf'],
             $ret['ibge'],
-            $ret['gia']
+            $ret['gia'],
+            $ret['unidade']
         );
-
     }
 }

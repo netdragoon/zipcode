@@ -4,6 +4,10 @@ use Illuminate\Cache\CacheManager;
 use Canducci\ZipCode\Contracts\ZipCodeContract;
 use Canducci\ZipCode\Contracts\ZipCodeRequestContract;
 
+/**
+ * Class ZipCode
+ * @package Canducci\ZipCode
+ */
 class ZipCode implements ZipCodeContract {
     
     /**
@@ -40,7 +44,6 @@ class ZipCode implements ZipCodeContract {
         $this->request = $request;
     }
 
-
     /**
      * @param $value
      * @param bool $renew
@@ -50,7 +53,6 @@ class ZipCode implements ZipCodeContract {
     public function find($value, $renew = false)
     {
         $message = '';
-
         if (is_string($value))
         {
             $value = str_replace('.', '', $value);
@@ -93,6 +95,9 @@ class ZipCode implements ZipCodeContract {
         throw new ZipCodeException($message);
     }
 
+    /**
+     * @return null|string
+     */
     private function getZipCodeInfo()
     {
         $this->renew();
@@ -125,6 +130,9 @@ class ZipCode implements ZipCodeContract {
         return null;
     }
 
+    /**
+     * @return mixed
+     */
     private function renew()
     {
         if ($this->renew && (is_null($this->value) === false)) 
@@ -135,9 +143,13 @@ class ZipCode implements ZipCodeContract {
             }           
             $this->renew = false;  
         }
+        return this;
     }
 
-    private function url() 
+    /**
+     * @return mixed
+     */
+    private function url()
     {
         return str_replace('[cep]', $this->value, 'http://viacep.com.br/ws/[cep]/json/');
     }

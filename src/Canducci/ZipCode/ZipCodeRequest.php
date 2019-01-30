@@ -2,6 +2,10 @@
 
 use Canducci\ZipCode\Contracts\ZipCodeRequestContract;
 
+/**
+ * Class ZipCodeRequest
+ * @package Canducci\ZipCode
+ */
 class ZipCodeRequest implements ZipCodeRequestContract
 {
     /**

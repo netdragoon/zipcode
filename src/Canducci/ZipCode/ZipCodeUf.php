@@ -1,5 +1,9 @@
 <?php namespace Canducci\ZipCode;
 
+/**
+ * Class ZipCodeUf
+ * @package Canducci\ZipCode
+ */
 abstract class ZipCodeUf
 {
     const AC = 'ac';
@@ -30,6 +34,10 @@ abstract class ZipCodeUf
     const SP = 'sp';
     const TO = 'to';
 
+    /**
+     * @return array
+     * @throws \ReflectionException
+     */
     public static function lists()
     {
         $rf = new \ReflectionClass("Canducci\ZipCode\ZipCodeUf");
