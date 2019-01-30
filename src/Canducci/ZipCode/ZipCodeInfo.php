@@ -42,9 +42,9 @@ class ZipCodeInfo implements ZipCodeInfoContract {
      */
     public function getJson()
     {
-        if (!is_null($this->valueJson))
+        if (!empty($this->valueJson))
         {
-            return $this->valueJson;    
+            return $this->valueJson;
         }
         return null;        
     }
@@ -56,9 +56,9 @@ class ZipCodeInfo implements ZipCodeInfoContract {
      */
     public function getArray()
     {
-        if (!is_null($this->valueJson))
+        if (!emtpy($this->valueJson))
         {
-		    return json_decode($this->getJson(), true);
+		    return json_decode($this->valueJson, true);
         }
         return null;
     }
@@ -70,9 +70,9 @@ class ZipCodeInfo implements ZipCodeInfoContract {
      */
     public function getObject()
     {
-        if (!is_null($this->valueJson))
+        if (!empty($this->valueJson))
         {
-	   	    return json_decode($this->getJson(), false);
+	   	    return json_decode($this->valueJson, false);
         }
         return null;
     }
@@ -84,7 +84,7 @@ class ZipCodeInfo implements ZipCodeInfoContract {
      */
     private function json_validate_zipcode() 
     {
-        if (is_string($this->valueJson)) 
+        if (!empty($this->valueJson) && is_string($this->valueJson))
         {
             $ret = @json_decode($this->valueJson, true);            
             return (json_last_error() === JSON_ERROR_NONE && 
