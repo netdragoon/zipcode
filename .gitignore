@@ -121,3 +121,7 @@ composer.phar
 .idea/*
 .idea/**/
 .idea
+
+# Removing composer.lock according to recommendation:
+# https://blog.martinhujer.cz/17-tips-for-using-composer-efficiently/
+composer.lock
