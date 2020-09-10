@@ -1,7 +1,6 @@
 <?php
 
-if (!function_exists('zipcode'))
-{
+if (!function_exists('zipcode')) {
     /**
      * @param $value
      * @param bool $renew
@@ -12,5 +11,4 @@ if (!function_exists('zipcode'))
         $zip_code = app('Canducci\ZipCode\Contracts\ZipCodeContract');
         return $zip_code->find($value, $renew);
     }
-
 }

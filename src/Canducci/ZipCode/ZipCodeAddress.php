@@ -1,6 +1,9 @@
-<?php  namespace Canducci\ZipCode;
+<?php
+
+namespace Canducci\ZipCode;
 
 use Canducci\ZipCode\Contracts\ZipCodeAddressContract;
+use Exception;
 
 /**
  * Class ZipCodeAddress
@@ -23,45 +26,36 @@ class ZipCodeAddress implements ZipCodeAddressContract
     }
 
     /**
-     * @param $uf
-     * @param $city
-     * @param $address
+     * @param string $uf
+     * @param string $city
+     * @param string $address
      * @return ZipCodeAddressInfo
      * @throws ZipCodeException
      */
-    public function find($uf, $city, $address)
+    public function find(string $uf, string $city, string $address)
     {
         $message = '';
-        if (strlen($uf) < 2)
-        {
-            $message .= PHP_EOL . trans('canducci-zipcodeaddress::zipcodeaddress.invalid_uf');
+        if (strlen($uf) < 2) {
+            $message .= PHP_EOL . 'Uf invalid';
         }
-        if (strlen($city) < 3)
-        {
-            $message .= PHP_EOL . trans('canducci-zipcodeaddress::zipcodeaddress.invalid_city');
+        if (strlen($city) < 3) {
+            $message .= PHP_EOL . "City invalid";
         }
-        if (strlen($address) < 3)
-        {
-            $message .= PHP_EOL . trans('canducci-zipcodeaddress::zipcodeaddress.invalid_address');
+        if (strlen($address) < 3) {
+            $message .= PHP_EOL . 'Address invalid';
         }
-        if ($message != '')
-        {
+        if ($message != '') {
             throw new ZipCodeException($message);
         }
-        try
-        {
+        try {
             $response = $this->request->get($this->url($uf, $city, $address, 'json'));
-            if ($response && $response->getStatusCode() === 200)
-            {
+            if ($response && $response->getStatusCode() === 200) {
                 return new ZipCodeAddressInfo($response->getJson());
             }
-            throw new ZipCodeException('Request inválid', $response->getStatusCode());
-        }
-        catch(ClientException $e)
-        {
+            throw new ZipCodeException('Request invalid', $response->getStatusCode());
+        } catch (Exception $e) {
             throw new ZipCodeException($e->getMessage(), $e->getCode(), $e->getPrevious());
         }
-
     }
 
     /**
@@ -76,7 +70,8 @@ class ZipCodeAddress implements ZipCodeAddressContract
         $this->clean($uf);
         $this->clean($city);
         $this->clean($address);
-        return sprintf('viacep.com.br/ws/%s/%s/%s/%s/',
+        return sprintf(
+            'viacep.com.br/ws/%s/%s/%s/%s/',
             strtolower($uf),
             strtolower($city),
             strtolower($address),

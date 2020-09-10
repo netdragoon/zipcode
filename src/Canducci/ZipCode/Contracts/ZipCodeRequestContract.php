@@ -1,4 +1,8 @@
-<?php namespace Canducci\ZipCode\Contracts;
+<?php
+
+namespace Canducci\ZipCode\Contracts;
+
+use Canducci\ZipCode\ZipCodeResponse;
 
 interface ZipCodeRequestContract
 {
@@ -6,5 +10,5 @@ interface ZipCodeRequestContract
      * @param $url
      * @return mixed
      */
-    public function get($url);
+    public function get(string $url): ZipCodeResponse;
 }

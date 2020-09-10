@@ -1,4 +1,6 @@
-<?php namespace Canducci\ZipCode;
+<?php
+
+namespace Canducci\ZipCode;
 
 use Exception;
 
@@ -6,7 +8,8 @@ use Exception;
  * Class ZipCodeException
  * @package Canducci\ZipCode
  */
-class ZipCodeException extends Exception {
+class ZipCodeException extends Exception
+{
 
     /**
      * ZipCodeException constructor.

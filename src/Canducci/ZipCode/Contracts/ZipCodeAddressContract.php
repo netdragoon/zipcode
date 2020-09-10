@@ -1,14 +1,16 @@
-<?php namespace Canducci\ZipCode\Contracts;
+<?php
 
-interface ZipCodeAddressContract {
+namespace Canducci\ZipCode\Contracts;
+
+interface ZipCodeAddressContract
+{
 
     /**
-     * @param $uf
-     * @param $city
-     * @param $address
-     * @param $type
+     * @param string $uf
+     * @param string $city
+     * @param string $address
+     * @param string $type
      * @return mixed
      */
-    public function find($uf, $city, $address);
-
+    public function find(string $uf, string $city, string $address);
 }

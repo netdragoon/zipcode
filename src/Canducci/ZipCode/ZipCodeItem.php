@@ -1,10 +1,13 @@
-<?php namespace Canducci\ZipCode;
+<?php
+
+namespace Canducci\ZipCode;
 
 /**
  * Class ZipCodeItem
  * @package Canducci\ZipCode
  */
-class ZipCodeItem {
+class ZipCodeItem
+{
 
     protected $cep;
     protected $logradouro;
@@ -14,7 +17,8 @@ class ZipCodeItem {
     protected $uf;
     protected $ibge;
     protected $gia;
-    protected $unidade;
+    protected $ddd;
+    protected $siafi;
 
     /**
      * ZipCodeItem constructor.
@@ -26,9 +30,10 @@ class ZipCodeItem {
      * @param $uf
      * @param $ibge
      * @param $gia
-     * @param $unidade
+     * @param $dddd
+     * @param @siafi
      */
-    public function __construct($cep, $logradouro, $complemento, $bairro, $localidade, $uf, $ibge, $gia, $unidade)
+    public function __construct($cep, $logradouro, $complemento, $bairro, $localidade, $uf, $ibge, $gia, $ddd, $siafi)
     {
         $this->cep = $cep;
         $this->logradouro = $logradouro;
@@ -38,13 +43,14 @@ class ZipCodeItem {
         $this->uf = $uf;
         $this->ibge = $ibge;
         $this->gia = $gia;
-        $this->unidade = $unidade;
+        $this->ddd = $ddd;
+        $this->siafi = $siafi;
     }
 
     /**
      * @return mixed
      */
-    public function getCep()
+    public function getCep(): string
     {
         return $this->cep;
     }
@@ -52,7 +58,7 @@ class ZipCodeItem {
     /**
      * @return mixed
      */
-    public function getLogradouro()
+    public function getLogradouro(): string
     {
         return $this->logradouro;
     }
@@ -60,7 +66,7 @@ class ZipCodeItem {
     /**
      * @return mixed
      */
-    public function getComplemento()
+    public function getComplemento(): string
     {
         return $this->complemento;
     }
@@ -68,7 +74,7 @@ class ZipCodeItem {
     /**
      * @return mixed
      */
-    public function getBairro()
+    public function getBairro(): string
     {
         return $this->bairro;
     }
@@ -76,7 +82,7 @@ class ZipCodeItem {
     /**
      * @return mixed
      */
-    public function getLocalidade()
+    public function getLocalidade(): string
     {
         return $this->localidade;
     }
@@ -84,7 +90,7 @@ class ZipCodeItem {
     /**
      * @return mixed
      */
-    public function getUf()
+    public function getUf(): string
     {
         return $this->uf;
     }
@@ -92,7 +98,7 @@ class ZipCodeItem {
     /**
      * @return mixed
      */
-    public function getIbge()
+    public function getIbge(): string
     {
         return $this->ibge;
     }
@@ -100,7 +106,7 @@ class ZipCodeItem {
     /**
      * @return mixed
      */
-    public function getGia()
+    public function getGia(): string
     {
         return $this->gia;
     }
@@ -108,9 +114,17 @@ class ZipCodeItem {
     /**
      * @return mixed
      */
-    public function getUnidade()
+    public function getDdd(): string
     {
-        return $this->unidade;
+        return $this->ddd;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSiafi(): string
+    {
+        return $this->siafi;
     }
 
     /**

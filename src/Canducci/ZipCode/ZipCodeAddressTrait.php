@@ -1,10 +1,13 @@
-<?php namespace Canducci\ZipCode;
+<?php
+
+namespace Canducci\ZipCode;
 
 /**
  * Trait ZipCodeAddressTrait
  * @package Canducci\ZipCode
  */
-trait ZipCodeAddressTrait {
+trait ZipCodeAddressTrait
+{
 
     /**
      * @param $uf

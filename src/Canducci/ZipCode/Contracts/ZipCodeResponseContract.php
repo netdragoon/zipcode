@@ -1,9 +1,13 @@
-<?php namespace Canducci\ZipCode\Contracts;
+<?php
+
+namespace Canducci\ZipCode\Contracts;
+
+use stdClass;
 
 interface ZipCodeResponseContract
 {
-    public function getStatusCode();
-    public function getJson();
-    public function getArray();
-    public function getObject();
+    public function getStatusCode(): int;
+    public function getJson(): string;
+    public function getArray(): array;
+    public function getObject(): stdClass;
 }

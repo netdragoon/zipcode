@@ -1,6 +1,9 @@
-<?php namespace Canducci\ZipCode;
+<?php
+
+namespace Canducci\ZipCode;
 
 use Canducci\ZipCode\Contracts\ZipCodeResponseContract;
+use stdClass;
 
 /**
  * Class ZipCodeResponse
@@ -16,22 +19,22 @@ class ZipCodeResponse implements ZipCodeResponseContract
         $this->statusCode = $statusCode;
     }
 
-    public function getStatusCode()
+    public function getStatusCode(): int
     {
         return $this->statusCode;
     }
 
-    public function getJson()
+    public function getJson(): string
     {
         return $this->json;
     }
 
-    public function getArray()
+    public function getArray(): array
     {
         return json_decode($this->getJson(), true);
     }
 
-    public function getObject()
+    public function getObject(): stdClass
     {
         return json_decode($this->getJson(), false);
     }

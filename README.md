@@ -2,8 +2,6 @@
 
 Laravel package for [VIACEP web service](http://viacep.com.br/) - http://viacep.com.br
 
-[![Zoom Icon](http://i666.photobucket.com/albums/vv25/netdragoon/cep_zpsoqtae5hr.png)](https://packagist.org/packages/canducci/zipcode)
-
 [![Build Status](https://travis-ci.org/netdragoon/zipcode.svg?branch=master)](https://travis-ci.org/netdragoon/zipcode)
 [![Downloads](https://img.shields.io/packagist/dt/canducci/zipcode.svg?style=flat)](https://packagist.org/packages/canducci/zipcode)
 [![License](https://img.shields.io/packagist/l/canducci/zipcode.svg)](https://packagist.org/packages/canducci/zipcode)
@@ -11,7 +9,7 @@ Laravel package for [VIACEP web service](http://viacep.com.br/) - http://viacep.
 
 [See Demo](http://zipcodedemo.herokuapp.com/)
 
-## Quick Start with  [Composer](https://getcomposer.org/)
+## Quick Start with [Composer](https://getcomposer.org/)
 
 ```sh
 composer require canducci/zipcode
@@ -41,10 +39,10 @@ And add those to the `aliases` array:
 
 Just pass the zipcode to any of the ways of retrieving it:
 
-* [Facade](#facade)
-* [Helper](#helper)
-* [Injection](#injection)
-* or [Trait](#trait)
+- [Facade](#facade)
+- [Helper](#helper)
+- [Injection](#injection)
+- or [Trait](#trait)
 
 ### Facade
 
@@ -123,9 +121,9 @@ $zipCodeInfo = $this->zipcode('01414-000', true); // Trait
 
 By default, the return type is **`null`** or an instance of **`Canducci\ZipCode\ZipCodeInfo`**, but you can transform it to any of the following common types:
 
-* [Array](#array)
-* [Json](#json)
-* [Object](#object)
+- [Array](#array)
+- [Json](#json)
+- [Object](#object)
 
 ```php
 if ($zipCodeInfo) // null or ZipCodeInfo

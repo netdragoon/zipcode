@@ -1,36 +1,41 @@
-<?php namespace Canducci\ZipCode\Contracts;
+<?php
 
-interface ZipCodeAddressInfoContract {
+namespace Canducci\ZipCode\Contracts;
+
+use Canducci\ZipCode\ZipCodeItem;
+use stdClass;
+
+interface ZipCodeAddressInfoContract
+{
 
     /**
      * return JSON Javascript
      *
      * @return JSON Javascript
      */
-    public function getJson();
+    public function getJson(): string;
 
     /**
      * return Array
      *
      * @return Array
      */
-    public function getArray();
+    public function getArray(): array;
 
     /**
      * return stdClass (Object)
      *
      * @return \stdClass
      */
-    public function getObject();
+    public function getObject(): stdClass;
 
     /**
      * @return int count of array
      */
-    public function count();
+    public function count(): int;
 
     /**
      * @return Array of ZipCodeItem
      */
-    public function getZipCodeItem();
-
+    public function getZipCodeItem(): array;
 }
