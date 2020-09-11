@@ -36,11 +36,7 @@
     ]
   },
   "scripts": {
-    "test": "phpunit tests/",
-    "post-package-install": [
-      "php artisan vendor:publish --provider=Vendor\\Canducci\\ZipCode\\Providers\\ZipCodeServiceProvider",
-      "php artisan vendor:publish --provider=Vendor\\Canducci\\ZipCode\\Providers\\ZipCodeAddressServiceProvider"
-    ]
+    "test": "phpunit tests/"
   },
   "extra": {
     "laravel": {
