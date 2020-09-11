@@ -3,12 +3,13 @@
 declare(strict_types=1);
 
 use Canducci\ZipCode\ZipCode;
-use Canducci\ZipCode\ZipCodeInfo;
 use Canducci\ZipCode\ZipCodeRequest;
 use Canducci\ZipCode\ZipCodeTrait;
 use Illuminate\Cache\CacheManager;
-use Illuminate\Support\Facades\App;
 use PHPUnit\Framework\TestCase;
+use Illuminate\Contracts\Foundation\Application;
+
+//https://packagist.org/packages/php-extended/php-simple-cache-filesystem
 
 class ZipCodeTest extends TestCase
 {
@@ -19,17 +20,18 @@ class ZipCodeTest extends TestCase
         $this->assertNotNull('Ok');
     }
 
-    /*-
+
     public function getZipCodeInstance(): ZipCode
     {
-        $instance = Application::make();
+
+        $instance = new Application();
         return new ZipCode(
-            new CacheManager($this->app),
+            new CacheManager($instance),
             new ZipCodeRequest()
         );
     }
 
-    
+
     public function getZipCodeInfoInstance(): ZipCodeInfo
     {
         $zipCode = $this->getZipCodeInstance();
@@ -40,5 +42,5 @@ class ZipCodeTest extends TestCase
     {
         $info = $this->getZipCodeInstance()->find('01001000');
         $this->assertNotNull($info);
-    }*/
+    }
 }
