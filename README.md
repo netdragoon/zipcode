@@ -1,6 +1,8 @@
 # Canducci Zipcode
 
-Laravel package for [VIACEP web service](http://viacep.com.br/) - http://viacep.com.br
+### Laravel pacote do Web Service [VIACEP web service](http://viacep.com.br/) - http://viacep.com.br
+
+---
 
 [![Downloads](https://img.shields.io/packagist/dt/canducci/zipcode.svg?style=flat)](https://packagist.org/packages/canducci/zipcode)
 [![License](https://img.shields.io/packagist/l/canducci/zipcode.svg)](https://packagist.org/packages/canducci/zipcode)
@@ -9,13 +11,13 @@ Laravel package for [VIACEP web service](http://viacep.com.br/) - http://viacep.
 
 [See Demo](http://zipcodedemo.herokuapp.com/)
 
-## Quick Start with [Composer](https://getcomposer.org/)
+## Utilizando composer: [Composer](https://getcomposer.org/)
 
 ```sh
 composer require canducci/zipcode
 ```
 
-Add these classes to the end of `providers` array in `config/app.php`:
+Adicione as classes no final do array de `providers` no arquivo `config/app.php`:
 
 ```php
 'providers' => [
@@ -25,7 +27,7 @@ Add these classes to the end of `providers` array in `config/app.php`:
 ],
 ```
 
-And add those to the `aliases` array:
+e adicione os seus apelidos no array `aliases`:
 
 ```php
 'aliases' => [
@@ -35,9 +37,17 @@ And add those to the `aliases` array:
 ],
 ```
 
-## How to Use It
+para finalizar precisa dar um:
 
-Just pass the zipcode to any of the ways of retrieving it:
+```php
+php artisan vendor:publish
+```
+
+após digitar esse comando vai aparecer um menu de opções então escolha `Canducci\ZipCode\Providers\ZipCodeServiceProvider` para publicar o arquivo de configuração (`simplecache.php`) na pasta `config/`
+
+## Como utilizar?
+
+Temos 4 caminhos para usufruir desse pacote:
 
 - [Facade](#facade)
 - [Helper](#helper)
@@ -85,9 +95,7 @@ class WelcomeController extends Controller
 }
 ```
 
-### How to Use Summary
-
-These is how they differ:
+Há diversas formas de chegar no mesmo resultado:
 
 ```php
 $zipCodeInfo = ZipCode::find('01414000'); // Facade
@@ -101,9 +109,9 @@ $zipCodeInfo = $this->zipcode('01414-000'); // Trait
 
 ---
 
-### Cache Renewal
+### Cache renovar
 
-You can force an item to renewal its cache with the second parameter:
+Pode forçar um item a renovar seu cache com o segundo parâmetro:
 
 ```php
 $zipCodeInfo = ZipCode::find('01414000', true); // Facade
@@ -117,9 +125,9 @@ $zipCodeInfo = $this->zipcode('01414-000', true); // Trait
 
 ---
 
-### Transforming the Return Type
+### Tipos de retornos
 
-By default, the return type is **`null`** or an instance of **`Canducci\ZipCode\ZipCodeInfo`**, but you can transform it to any of the following common types:
+Por padrão o retorno é nulo ou a instância da classe `Canducci\ZipCode\ZipCodeInfo`, e com esse retorno de classe existe os tipos `array`, `object` e `json` texto:
 
 - [Array](#array)
 - [Json](#json)
@@ -206,7 +214,7 @@ if ($zipCodeInfo)
 
 ---
 
-### Seaching for all Zipcodes for a particular City, UF, Address
+### Faça a buscas de varios endereços informando, `uf`, `cidade` e `endereço`:
 
 ```php
 public function get(Request $request)
@@ -221,11 +229,9 @@ public function get(Request $request)
 }
 ```
 
-Note: it's not mandatory to use it via helper in this case too.
-
 ---
 
-### To add to the list of UF
+### Lista de Unidade Federativa:
 
 ```php
 use Canducci\ZipCode\ZipCodeUf;
