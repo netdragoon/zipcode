@@ -22,15 +22,16 @@ class ZipCodeAddressInfo implements ZipCodeAddressInfoContract
      * @param $valueJson
      * @throws ZipCodeException
      */
-    public function __construct($valueJson)
+    public function __construct(string $valueJson)
     {
         if (is_string($valueJson)) {
             $this->valueJson = $valueJson;
             if ($this->json_validate_zipcodeaddress() === false) {
                 throw new ZipCodeException('Format invalid');
             }
+        } else {
+            throw new ZipCodeException('JSON empty');
         }
-        throw new ZipCodeException('JSON empty');
     }
 
     /**
