@@ -15,18 +15,18 @@ class ZipCodeAddressInfo implements ZipCodeAddressInfoContract
     /**
      * @var null|string
      */
-    private $valueJson = null;
+    private $value = null;
 
     /**
      * ZipCodeAddressInfo constructor.
-     * @param $valueJson
+     * @param $value
      * @throws ZipCodeException
      */
-    public function __construct(string $valueJson)
+    public function __construct(string $value)
     {
-        if (is_string($valueJson)) {
-            $this->valueJson = $valueJson;
-            if ($this->json_validate_zipcodeaddress() === false) {
+        if (is_string($value)) {
+            $this->value = $value;
+            if ($this->jsonValidate() === false) {
                 throw new ZipCodeException('Format invalid');
             }
         } else {
@@ -39,10 +39,7 @@ class ZipCodeAddressInfo implements ZipCodeAddressInfoContract
      */
     public function getJson(): string
     {
-        if (!is_null($this->valueJson)) {
-            return $this->valueJson;
-        }
-        return null;
+        return $this->value;
     }
 
     /**
@@ -56,7 +53,7 @@ class ZipCodeAddressInfo implements ZipCodeAddressInfoContract
     /**
      * @return mixed|null|\stdClass
      */
-    public function getObject(): stdClass
+    public function getObject(): array
     {
         return json_decode($this->getJson(), false);
     }
@@ -72,13 +69,10 @@ class ZipCodeAddressInfo implements ZipCodeAddressInfoContract
     /**
      * @return bool
      */
-    private function json_validate_zipcodeaddress()
+    private function jsonValidate()
     {
-        if (is_string($this->valueJson)) {
-            $ret = @json_decode($this->valueJson, true);
-            return json_last_error() === JSON_ERROR_NONE && is_array($ret);
-        }
-        return false;
+        $ret = @json_decode($this->value, true);
+        return json_last_error() === JSON_ERROR_NONE && is_array($ret);
     }
 
     /**

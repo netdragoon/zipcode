@@ -27,7 +27,7 @@ interface ZipCodeAddressInfoContract
      *
      * @return \stdClass
      */
-    public function getObject(): stdClass;
+    public function getObject(): array;
 
     /**
      * @return int count of array

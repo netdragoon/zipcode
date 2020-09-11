@@ -132,6 +132,6 @@ class ZipCode implements ZipCodeContract
      */
     private function url(): string
     {
-        return str_replace('[cep]', $this->value, 'http://viacep.com.br/ws/[cep]/json/');
+        return str_replace('[cep]', $this->value, 'https://viacep.com.br/ws/[cep]/json/');
     }
 }

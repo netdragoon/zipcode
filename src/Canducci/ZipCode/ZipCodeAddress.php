@@ -71,7 +71,7 @@ class ZipCodeAddress implements ZipCodeAddressContract
         $this->clean($city);
         $this->clean($address);
         return sprintf(
-            'viacep.com.br/ws/%s/%s/%s/%s/',
+            'https://viacep.com.br/ws/%s/%s/%s/%s/',
             strtolower($uf),
             strtolower($city),
             strtolower($address),
