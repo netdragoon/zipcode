@@ -42,5 +42,17 @@
       "php artisan vendor:publish --provider=Vendor\\Canducci\\ZipCode\\Providers\\ZipCodeServiceProvider",
       "php artisan vendor:publish --provider=Vendor\\Canducci\\ZipCode\\Providers\\ZipCodeAddressServiceProvider"
     ]
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Canducci\\ZipCode\\Providers\\ZipCodeServiceProvider",
+        "Canducci\\ZipCode\\Providers\\ZipCodeAddressServiceProvider"
+      ],
+      "aliases": {
+        "ZipCode": "Canducci\\ZipCode\\Facades\\ZipCode",
+        "Address": "Canducci\\ZipCode\\Facades\\ZipCodeAddress"
+      }
+    }
   }
 }

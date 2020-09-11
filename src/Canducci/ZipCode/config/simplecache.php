@@ -1,3 +1,4 @@
-return [
-'path' => storage_path('framework/cache')
-];
+<?php 
+	return [
+		'path' => storage_path('framework/cache')
+	];
