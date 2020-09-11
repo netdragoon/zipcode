@@ -2,9 +2,9 @@
 
 namespace Canducci\ZipCode;
 
-use Illuminate\Cache\CacheManager;
 use Canducci\ZipCode\Contracts\ZipCodeContract;
 use Canducci\ZipCode\Contracts\ZipCodeRequestContract;
+use PhpExtended\SimpleCache\SimpleCacheFilesystem;
 
 /**
  * Class ZipCode
@@ -24,9 +24,9 @@ class ZipCode implements ZipCodeContract
     private $renew;
 
     /**
-     * @var $cacheManager (Illuminate\Cache\CacheManager)
+     * @var $cache
      */
-    private $cacheManager;
+    private $cache;
 
     /**
      * @var ZipCodeRequestContract
@@ -36,14 +36,14 @@ class ZipCode implements ZipCodeContract
     /**
      * Construct ZipCode
      *
-     * @param CacheManager $cacheManager (Illuminate\Cache\CacheManager)
+     * @param SimpleCacheFilesystem $cache 
      * @param ZipCodeRequestContract $request
      */
-    public function __construct(CacheManager $cacheManager, ZipCodeRequestContract $request)
+    public function __construct(SimpleCacheFilesystem $cache, ZipCodeRequestContract $request)
     {
         $this->value = '';
         $this->renew = false;
-        $this->cacheManager = $cacheManager;
+        $this->cache = $cache;
         $this->request = $request;
     }
 
@@ -91,8 +91,8 @@ class ZipCode implements ZipCodeContract
     private function getZipCodeInfo(): string
     {
         $this->renew();
-        if ($this->cacheManager->has('zipcode_' . $this->value)) {
-            $getCache = $this->cacheManager->get('zipcode_' . $this->value);
+        if ($this->cache->has('zipcode_' . $this->value)) {
+            $getCache = $this->cache->get('zipcode_' . $this->value);
             if (isset($getCache) && is_array($getCache)) {
                 if (isset($getCache['erro']) && $getCache['erro'] == true) {
                     return null;
@@ -103,7 +103,7 @@ class ZipCode implements ZipCodeContract
             $response = $this->request->get($this->url());
             if ($response && $response->getStatusCode() === 200) {
                 $getResponse = $response->getArray();
-                $this->cacheManager->put('zipcode_' . $this->value, $getResponse, 86400);
+                $this->cache->set('zipcode_' . $this->value, $getResponse, 86400);
                 if (isset($getResponse['erro']) && $getResponse['erro'] == true) {
                     return null;
                 }
@@ -119,8 +119,8 @@ class ZipCode implements ZipCodeContract
     private function renew(): ZipCode
     {
         if ($this->renew && (is_null($this->value) === false)) {
-            if ($this->cacheManager->has('zipcode_' . $this->value)) {
-                $this->cacheManager->forget('zipcode_' . $this->value);
+            if ($this->cache->has('zipcode_' . $this->value)) {
+                $this->cache->delete('zipcode_' . $this->value);
             }
             $this->renew = false;
         }

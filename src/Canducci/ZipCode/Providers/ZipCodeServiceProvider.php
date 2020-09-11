@@ -9,14 +9,23 @@ class ZipCodeServiceProvider extends ServiceProvider
 {
 	public function boot()
 	{
+		$this->publishes([
+			__DIR__ . '../config/simplecache.php' => config_path('simplecache.php'),
+		]);
 	}
 	public function register()
 	{
-		if (isset($this->app['Canducci\ZipCode\Contracts\ZipCodeRequestContract']) === false) {
-			$this->app->singleton('Canducci\ZipCode\Contracts\ZipCodeRequestContract', 'Canducci\ZipCode\ZipCodeRequest');
+		if (isset($this->app[PhpExtended\SimpleCache\SimpleCacheFilesystem::class]) === false) {
+			$this->app->singleton(
+				\PhpExtended\SimpleCache\SimpleCacheFilesystem::class,
+				new \PhpExtended\SimpleCache\SimpleCacheFilesystem(config('simplecache.path') ?? __DIR__)
+			);
 		}
-		$this->app->singleton('Canducci\ZipCode\Contracts\ZipCodeContract', function ($app) {
-			return new ZipCode($app['cache'], $app['Canducci\ZipCode\Contracts\ZipCodeRequestContract']);
+		if (isset($this->app[\Canducci\ZipCode\Contracts\ZipCodeRequestContract::class]) === false) {
+			$this->app->singleton(\Canducci\ZipCode\Contracts\ZipCodeRequestContract::class, \Canducci\ZipCode\ZipCodeRequest::class);
+		}
+		$this->app->singleton(\Canducci\ZipCode\Contracts\ZipCodeContract::class, function ($app) {
+			return new ZipCode($app[\PhpExtended\SimpleCache\SimpleCacheFilesystem::class], $app[\Canducci\ZipCode\Contracts\ZipCodeRequestContract::class]);
 		});
 	}
 }

@@ -3,6 +3,7 @@
 namespace Canducci\ZipCode;
 
 use Canducci\ZipCode\Contracts\ZipCodeInfoContract;
+use stdClass;
 
 /**
  * Class ZipCodeInfo
@@ -39,7 +40,7 @@ class ZipCodeInfo implements ZipCodeInfoContract
      *
      * @return JSON Javascript
      */
-    public function getJson()
+    public function getJson(): string
     {
         if (!empty($this->valueJson)) {
             return $this->valueJson;
@@ -52,7 +53,7 @@ class ZipCodeInfo implements ZipCodeInfoContract
      *
      * @return Array
      */
-    public function getArray()
+    public function getArray(): array
     {
         if (!empty($this->valueJson)) {
             return json_decode($this->valueJson, true);
@@ -65,7 +66,7 @@ class ZipCodeInfo implements ZipCodeInfoContract
      *
      * @return \stdClass
      */
-    public function getObject()
+    public function getObject(): stdClass
     {
         if (!empty($this->valueJson)) {
             return json_decode($this->valueJson, false);
@@ -78,7 +79,7 @@ class ZipCodeInfo implements ZipCodeInfoContract
      *
      * @return bool
      */
-    private function json_validate_zipcode()
+    private function json_validate_zipcode(): bool
     {
         if (!empty($this->valueJson) && is_string($this->valueJson)) {
             $ret = @json_decode($this->valueJson, true);
@@ -100,7 +101,7 @@ class ZipCodeInfo implements ZipCodeInfoContract
     /**
      * @return ZipCodeItem
      */
-    public function getZipCodeItem()
+    public function getZipCodeItem(): ZipCodeItem
     {
         $ret = $this->getArray();
         return new ZipCodeItem(

@@ -6,8 +6,7 @@ use Canducci\ZipCode\ZipCode;
 use Canducci\ZipCode\ZipCodeInfo;
 use Canducci\ZipCode\ZipCodeRequest;
 use Canducci\ZipCode\ZipCodeTrait;
-use Illuminate\Cache\CacheManager;
-use Illuminate\Support\Facades\App;
+use PhpExtended\SimpleCache\SimpleCacheFilesystem;
 use PHPUnit\Framework\TestCase;
 
 class ZipCodeTest extends TestCase
@@ -19,26 +18,28 @@ class ZipCodeTest extends TestCase
         $this->assertNotNull('Ok');
     }
 
-    /*-
+
     public function getZipCodeInstance(): ZipCode
     {
-        $instance = Application::make();
+        if (realpath(__DIR__ . '/tmp') === false) {
+            mkdir(__DIR__ . '/tmp');
+        }
+        $path = realpath(__DIR__ . '/tmp');
         return new ZipCode(
-            new CacheManager($this->app),
+            new SimpleCacheFilesystem($path),
             new ZipCodeRequest()
         );
     }
 
-    
     public function getZipCodeInfoInstance(): ZipCodeInfo
     {
         $zipCode = $this->getZipCodeInstance();
-        return $zipCode->find('01414000');
+        return $zipCode->find('19200000');
     }
 
     public function testZipCodeInfo(): void
     {
-        $info = $this->getZipCodeInstance()->find('01001000');
+        $info = $this->getZipCodeInfoInstance();
         $this->assertNotNull($info);
-    }*/
+    }
 }
