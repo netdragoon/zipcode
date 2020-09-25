@@ -161,7 +161,8 @@ if ($zipCodeInfo)
         [ibge] => 3550308,
         [complemento] =>
         [gia] => 1004,
-        [unidade] =>
+        [siafi] => 0
+        [ddd] = 11
     )
     */
 }
@@ -183,7 +184,8 @@ if ($zipCodeInfo)
         "ibge": "3550308",
         "complemento": ""
         "gia": 1004,
-        "unidade": ""
+        "ddd": "11",
+        "siafi": 0
     }
     */
 }
@@ -206,7 +208,8 @@ if ($zipCodeInfo)
         [ibge] => 3550308
         [complemento] =>
         [gia] => 1004
-        [unidade] =>
+        [siafi] => 0
+        [ddd] = 011
     )
     */
 }
