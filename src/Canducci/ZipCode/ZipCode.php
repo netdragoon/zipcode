@@ -53,7 +53,7 @@ class ZipCode implements ZipCodeContract
      * @return Canducci\ZipCode\ZipCodeInfo|ZipCodeInfo|null
      * @throws ZipCodeException
      */
-    public function find(string $value, bool $renew = false): ZipCodeInfo
+    public function find(string $value, bool $renew = false): ?ZipCodeInfo
     {
         $message = '';
         if (is_string($value)) {
@@ -88,7 +88,7 @@ class ZipCode implements ZipCodeContract
     /**
      * @return null|string
      */
-    private function getZipCodeInfo(): string
+    private function getZipCodeInfo(): ?string
     {
         $this->renew();
         if ($this->cache->has('zipcode_' . $this->value)) {
