@@ -15,5 +15,5 @@ interface ZipCodeContract
      * @return Canducci\ZipCode\ZipCodeInfo
      * @throws Canducci\ZipCode\ZipCodeException
      */
-    public function find(string $value, bool $renew = false): ZipCodeInfo;
+    public function find(string $value, bool $renew = false): ?ZipCodeInfo;
 }
