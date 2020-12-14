@@ -1,0 +1,16 @@
+{
+    "name": "canducci/zipcode",
+    "description": "Canducci ZipCode - Cep Of Brazil",
+    "type": "library",
+    "require": {
+        "php-extended/php-simple-cache-filesystem": "dev-master"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "fulviocanducci",
+            "email": "fulviocanducci@hotmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
