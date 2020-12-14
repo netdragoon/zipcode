@@ -1,16 +1,38 @@
 {
-    "name": "canducci/zipcode",
-    "description": "Canducci ZipCode - Cep Of Brazil",
-    "type": "library",
-    "require": {
-        "php-extended/php-simple-cache-filesystem": "dev-master"
+  "name": "canducci/zipcode",
+  "description": "Canducci ZipCode - Cep Of Brazil",
+  "type": "library",
+  "require": {
+    "php": ">=8.0.0",
+    "php-extended/php-simple-cache-filesystem": "dev-master"
+  },
+  "license": "MIT",
+  "keywords": [
+    "cep",
+    "zip",
+    "zipcode",
+    "cep from brazil",
+    "laravel"
+  ],
+  "homepage": "https://github.com/netdragoon/zipcode",
+  "authors": [
+    {
+      "name": "fulviocanducci",
+      "email": "fulviocanducci@hotmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-4": {
+      "Canducci\\ZipCode\\": "src/Canducci/ZipCode/"
     },
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "fulviocanducci",
-            "email": "fulviocanducci@hotmail.com"
-        }
-    ],
-    "minimum-stability": "dev"
+    "files": []
+  },
+  "scripts": {
+    "test": "phpunit tests/"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "10.0.x-dev",
+    "phpspec/phpspec": "7.0.x-dev"
+  }
 }
