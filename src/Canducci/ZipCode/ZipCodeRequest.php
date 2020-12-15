@@ -6,7 +6,7 @@ use Exception;
 
 class ZipCodeRequest
 {
-    public function get($url): ZipCodeResponse
+    public function get($url): array
     {
         try {
             $ch = curl_init();
@@ -20,7 +20,7 @@ class ZipCodeRequest
                 return null;
             }
             curl_close($ch);
-            return new ZipCodeResponse($json, $httpResponse);
+            return array('json' => $json, 'httpResponse' => $httpResponse);
         } catch (Exception $ex) {
             throw $ex;
         }

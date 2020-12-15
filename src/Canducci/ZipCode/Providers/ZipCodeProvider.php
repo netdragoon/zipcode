@@ -2,7 +2,6 @@
 
 namespace Canducci\ZipCode\Providers;
 
-use Canducci\ZipCode\ZipCode;
 use Illuminate\Support\ServiceProvider;
 
 class ZipCodeServiceProvider extends ServiceProvider
@@ -17,7 +16,7 @@ class ZipCodeServiceProvider extends ServiceProvider
 
   public function register()
   {
-    if (isset($this->app['PhpExtended\SimpleCache\SimpleCacheFilesystem']) === false) {
+    if (isset($this->app[\PhpExtended\SimpleCache\SimpleCacheFilesystem::class]) === false) {
       $this->app->singleton(
         'PhpExtended\SimpleCache\SimpleCacheFilesystem',
         function ($app) {
@@ -32,7 +31,7 @@ class ZipCodeServiceProvider extends ServiceProvider
       );
     }
     $this->app->singleton(\Canducci\ZipCode\ZipCode::class, function ($app) {
-      return new ZipCode(
+      return new \Canducci\ZipCode\ZipCode(
         $app[\PhpExtended\SimpleCache\SimpleCacheFilesystem::class],
         $app[\Canducci\ZipCode\ZipCodeRequest::class]
       );

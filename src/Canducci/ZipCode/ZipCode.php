@@ -21,8 +21,8 @@ class ZipCode
   private $cache;
 
   /*
-     * @var const NAME
-     */
+   * @var const NAME
+  */
   const NAME = "zipcode";
 
   public function __construct(SimpleCacheFilesystem $cache, ZipCodeRequest $request)
@@ -31,7 +31,7 @@ class ZipCode
     $this->request = $request;
   }
 
-  public function find(string $value): ZipCodeResponse
+  public function find(string $value): ?ZipCodeResponse
   {
     if (!$this->parse($value)) {
       throw new Exception('Cep invalid');
@@ -45,16 +45,16 @@ class ZipCode
     return mb_strlen($value) === 8 && preg_match('/^(\d){8}$/', $value);
   }
 
-  private function getOrSet(string $value)
+  private function getOrSet(string $value): ?ZipCodeResponse
   {
     $name = sprintf('%s_%s', ZipCode::NAME, $value);
     $response = $this->cache->get($name);
     if (is_null($response)) {
-      $response = $this->request->get($this->url($value));
-      if (!is_null($response) && $response->getHttpCode() === 200) {
+      $data = $this->request->get($this->url($value));
+      if (!is_null($data)) {
+        $response = new ZipCodeResponse($data['json'], $data['httpResponse']);
         $this->cache->set($name, $response);
       }
-      return $response;
     }
     return $response;
   }
