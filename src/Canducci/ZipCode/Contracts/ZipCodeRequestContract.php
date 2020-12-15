@@ -10,5 +10,5 @@ interface ZipCodeRequestContract
      * @param $url
      * @return mixed
      */
-    public function get(string $url): ZipCodeResponse;
+    public function get($url): ZipCodeResponse;
 }
