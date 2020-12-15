@@ -26,7 +26,9 @@
     "psr-4": {
       "Canducci\\ZipCode\\": "src/Canducci/ZipCode/"
     },
-    "files": []
+    "files": [
+      "src/Canducci/ZipCode/helpers.php"
+    ]
   },
   "scripts": {
     "test": "phpunit tests/"
