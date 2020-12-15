@@ -51,12 +51,10 @@ class ZipCode
     $response = $this->cache->get($name);
     if (is_null($response)) {
       $response = $this->request->get($this->url($value));
-      if ($response->getHttpCode() === 200) {
+      if (!is_null($response) && $response->getHttpCode() === 200) {
         $this->cache->set($name, $response);
-        return $response;
-      } else {
-        return null;
       }
+      return $response;
     }
     return $response;
   }

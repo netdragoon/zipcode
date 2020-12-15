@@ -26,18 +26,21 @@ class ZipCodeResponse
     }
 
     /**
+     * @return bool
+     */
+    public function isError(): bool
+    {
+        $array = $this->getArray();
+        return isset($array['erro']) && $array['erro'] === true;
+    }
+
+    /**
      * 
      * @return int
      */
     public function getHttpCode(): int
     {
         return $this->httpResponse['http_code'];
-    }
-
-    public function isError(): bool
-    {
-        $array = $this->getArray();
-        return isset($array['erro']) && $array['erro'] === true;
     }
 
     /**
@@ -84,27 +87,3 @@ class ZipCodeResponse
         return new ZipCodeItem($this->getArray());
     }
 }
-/*
-"url"
-"content_type"
-"http_code"
-"header_size"
-"request_size"
-"filetime"
-"ssl_verify_result"
-"redirect_count"
-"total_time"
-"namelookup_time"
-"connect_time"
-"pretransfer_time"
-"size_upload"
-"size_download"
-"speed_download"
-"speed_upload"
-"download_content_length"
-"upload_content_length"
-"starttransfer_time"
-"redirect_time"
-"certinfo"
-"request_header" (This is only set if the CURLINFO_HEADER_OUT is set by a previous call to curl_setopt())
- */

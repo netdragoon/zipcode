@@ -2,7 +2,10 @@
 
 namespace Canducci\ZipCode;
 
-class ZipCodeRequest {
+use Exception;
+
+class ZipCodeRequest
+{
     public function get($url): ZipCodeResponse
     {
         try {
@@ -13,7 +16,7 @@ class ZipCodeRequest {
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
             $json = curl_exec($ch);
             $httpResponse = curl_getinfo($ch);
-            if ($httpResponse['http_code'] != 200) {
+            if ($httpResponse['http_code'] !== 200) {
                 return null;
             }
             curl_close($ch);
