@@ -1,7 +1,7 @@
 <?php
 
 if (!function_exists('zipcode')) {
-  function zipcode(string $value): \Canducci\ZipCode\ZipCodeResponse
+  function zipcode(string $value): ?\Canducci\ZipCode\ZipCodeResponse
   {
     if (function_exists('app')) {
       $zipcode = app(\Canducci\ZipCode\ZipCode::class);
@@ -15,7 +15,7 @@ if (!function_exists('zipcode')) {
 }
 
 if (!function_exists('address')) {
-  function address(string $uf, string $city, string $address): \Canducci\ZipCode\AddressResponse
+  function address(string $uf, string $city, string $address): ?\Canducci\ZipCode\AddressResponse
   {
     if (function_exists('app')) {
       $address = app(\Canducci\ZipCode\Address::class);

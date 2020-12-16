@@ -31,7 +31,16 @@ class ZipCodeResponse
     public function isError(): bool
     {
         $array = $this->getArray();
-        return isset($array['erro']) && $array['erro'] === true;
+        return array_key_exists('erro', $array) && $array['erro'] === true;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isValid(): bool
+    {
+        $array = $this->getArray();
+        return array_key_exists('erro', $array) === false;
     }
 
     /**

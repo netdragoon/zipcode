@@ -35,7 +35,7 @@ class Address
     return mb_strlen($uf) === 2 && mb_strlen($city) > 2 && mb_strlen($address) > 2;
   }
 
-  private function getOrSet(string $uf, string $city, string $address)
+  private function getOrSet(string $uf, string $city, string $address): ?AddressResponse
   {
     $response = $this->request->get($this->url($uf, $city, $address));
     if (!is_null($response)) {
