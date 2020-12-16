@@ -70,6 +70,16 @@ class ZipCodeTest extends TestCase
     $this->assertIsObject($obj);
   }
 
+  // public function testValueCepValidFunctionGetStdClass()
+  // {
+  //   $value = '19.200-000';
+  //   $response = zipcode($value);  
+  //   $obj = $response->getObject();
+  //   $this->assertIsObject($obj);
+  //   $this->assertIsBool($response->isValid());
+  //   $this->assertTrue($response->isValid());
+  // }
+
   public function testValueCepValidGetZipCodeItem()
   {
     $zipCode = new ZipCode(

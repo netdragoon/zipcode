@@ -7,7 +7,6 @@ use Canducci\ZipCode\AddressResponse;
 use Canducci\ZipCode\ZipCodeRequest;
 use PHPUnit\Framework\TestCase;
 
-
 class AddressTest extends TestCase
 {
   public function testInstance()
@@ -67,5 +66,16 @@ class AddressTest extends TestCase
     $response = $address->find('sp', 'são paulosss', 'avessss');
     $this->assertInstanceOf(AddressResponse::class, $response);
     $this->assertIsArray($response->all());
-    }
+  }
+
+  // public function testValueAddressResponseAllCountFunctionToArray()
+  // {
+  //   $address = new Address(
+  //     new ZipCodeRequest()
+  //   );
+  //   $response = address('sp', 'pirapozinho', 'ave');
+  //   $this->assertInstanceOf(AddressResponse::class, $response);
+  //   $this->assertIsArray($response->all());
+  //   $this->assertIsArray($response->count() === 1);
+  // }
 }
