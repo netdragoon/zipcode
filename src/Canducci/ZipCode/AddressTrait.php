@@ -12,11 +12,11 @@ trait AddressTrait
    *
    * @param string $uf
    * @param string $city
-   * @param string $address
+   * @param string $street
    * @return AddressResponse|null
    */
-  public function address(string $uf, string $city, string $address): ?AddressResponse
+  public function address(string $uf, string $city, string $street): ?AddressResponse
   {
-    return address($uf, $city, $address);
+    return address($uf, $city, $street);
   }
 }

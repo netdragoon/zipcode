@@ -34,15 +34,15 @@ class Address
    *
    * @param string $uf
    * @param string $city
-   * @param string $address
+   * @param string $street
    * @return AddressResponse|null
    */
-  public function find(string $uf, string $city, string $address): ?AddressResponse
+  public function find(string $uf, string $city, string $street): ?AddressResponse
   {
-    if (!$this->parse($uf, $city, $address)) {
+    if (!$this->parse($uf, $city, $street)) {
       throw new \Exception('Uf invalid or City invalid or Adress invalid');
     }
-    return $this->getOrSet($uf, $city, $address);
+    return $this->getOrSet($uf, $city, $street);
   }
 
   /**
@@ -50,12 +50,12 @@ class Address
    *
    * @param string $uf
    * @param string $city
-   * @param string $address
+   * @param string $street
    * @return boolean
    */
-  private function parse(string $uf, string $city, string $address): bool
+  private function parse(string $uf, string $city, string $street): bool
   {
-    return mb_strlen($uf) === 2 && mb_strlen($city) > 2 && mb_strlen($address) > 2;
+    return mb_strlen($uf) === 2 && mb_strlen($city) > 2 && mb_strlen($street) > 2;
   }
 
   /**
@@ -63,12 +63,12 @@ class Address
    *
    * @param string $uf
    * @param string $city
-   * @param string $address
+   * @param string $street
    * @return AddressResponse|null
    */
-  private function getOrSet(string $uf, string $city, string $address): ?AddressResponse
+  private function getOrSet(string $uf, string $city, string $street): ?AddressResponse
   {
-    $response = $this->request->get($this->url($uf, $city, $address));
+    $response = $this->request->get($this->url($uf, $city, $street));
     if (!is_null($response)) {
       return new AddressResponse($response['json'], $response['httpResponse']);
     }
@@ -83,13 +83,13 @@ class Address
    * @param string $address
    * @return string
    */
-  private function url(string $uf, string $city, string $address): string
+  private function url(string $uf, string $city, string $street): string
   {
     return sprintf(
       'https://viacep.com.br/ws/%s/%s/%s/json/',
       strtolower($uf),
       strtolower($city),
-      strtolower($address),
+      strtolower($street),
     );
   }
 }

@@ -242,9 +242,9 @@ class HomeController {
   {
     $uf = $request->get('uf');
     $city = $request->get('cidade');
-    $address = $request->get('endereco')
+    $street = $request->get('endereco')
 
-    $response = ZipCode::find($uf, $city, $address);
+    $response = ZipCode::find($uf, $city, $street);
     if ($response && $response->count() > 0)
         return $response;
     return Response::json(['error' => 1]);
@@ -261,9 +261,9 @@ class HomeController {
   {
     $uf = $request->get('uf');
     $city = $request->get('cidade');
-    $address = $request->get('endereco')
+    $street = $request->get('endereco')
 
-    $response = $address($uf, $city, $address);
+    $response = $address($uf, $city, $street);
     if ($response && $response->count() > 0)
         return $response;
     return Response::json(['error' => 1]);
@@ -282,9 +282,9 @@ class HomeController {
   {
     $uf = $request->get('uf');
     $city = $request->get('cidade');
-    $address = $request->get('endereco')
+    $street = $request->get('endereco')
 
-    $response = $this->address($uf, $city, $address);
+    $response = $this->address($uf, $city, $street);
     if ($response && $response->count() > 0)
         return $response;
     return Response::json(['error' => 1]);
@@ -301,9 +301,9 @@ class HomeController {
   {
     $uf = $request->get('uf');
     $city = $request->get('cidade');
-    $address = $request->get('endereco')
+    $street = $request->get('endereco')
 
-    $response = address($uf, $city, $address);
+    $response = address($uf, $city, $street);
     if ($response && $response->count() > 0)
         return $response;
     return Response::json(['error' => 1]);

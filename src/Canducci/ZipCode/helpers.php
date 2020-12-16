@@ -26,10 +26,10 @@ if (!function_exists('address')) {
    *
    * @param string $uf
    * @param string $city
-   * @param string $address
+   * @param string $street
    * @return \Canducci\ZipCode\AddressResponse|null
    */
-  function address(string $uf, string $city, string $address): ?\Canducci\ZipCode\AddressResponse
+  function address(string $uf, string $city, string $street): ?\Canducci\ZipCode\AddressResponse
   {
     if (function_exists('app')) {
       $address = app(\Canducci\ZipCode\Address::class);
@@ -37,6 +37,6 @@ if (!function_exists('address')) {
       $request = new \Canducci\ZipCode\ZipCodeRequest();
       $address = new \Canducci\ZipCode\Address($request);
     }
-    return $address->find($uf, $city, $address);
+    return $address->find($uf, $city, $street);
   }
 }
