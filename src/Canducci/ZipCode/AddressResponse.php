@@ -105,4 +105,14 @@ class AddressResponse implements Iterator, Countable
   {
     return count($this->data);
   }
+
+  /**
+   * all
+   *
+   * @return array
+   */
+  public function all(): array 
+  {
+    return $this->data;
+  }
 }

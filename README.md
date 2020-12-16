@@ -246,7 +246,7 @@ class HomeController {
 
     $response = ZipCode::find($uf, $city, $street);
     if ($response && $response->count() > 0)
-        return $response;
+        return $response->all();
     return Response::json(['error' => 1]);
   }
 }
@@ -265,7 +265,7 @@ class HomeController {
 
     $response = $address($uf, $city, $street);
     if ($response && $response->count() > 0)
-        return $response;
+        return $response->all();
     return Response::json(['error' => 1]);
   }
 }
@@ -286,7 +286,7 @@ class HomeController {
 
     $response = $this->address($uf, $city, $street);
     if ($response && $response->count() > 0)
-        return $response;
+        return $response->all();
     return Response::json(['error' => 1]);
   }
 }
@@ -305,7 +305,7 @@ class HomeController {
 
     $response = address($uf, $city, $street);
     if ($response && $response->count() > 0)
-        return $response;
+        return $response->all();
     return Response::json(['error' => 1]);
   }
 }

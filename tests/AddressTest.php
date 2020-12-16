@@ -58,4 +58,14 @@ class AddressTest extends TestCase
     $this->assertIsInt($response->count());
     $this->assertTrue($response->count() === 0);
   }
+
+  public function testValueAddressResponseAllToArray()
+  {
+    $address = new Address(
+      new ZipCodeRequest()
+    );
+    $response = $address->find('sp', 'são paulosss', 'avessss');
+    $this->assertInstanceOf(AddressResponse::class, $response);
+    $this->assertIsArray($response->all());
+    }
 }
