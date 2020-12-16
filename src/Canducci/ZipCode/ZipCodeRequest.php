@@ -1,7 +1,6 @@
 <?php
 
 namespace Canducci\ZipCode;
-
 use Canducci\ZipCode\Contracts\ZipCodeRequestContract;
 use Exception;
 
