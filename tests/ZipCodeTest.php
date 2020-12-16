@@ -8,6 +8,7 @@ use Canducci\ZipCode\ZipCodeRequest;
 use PhpExtended\SimpleCache\SimpleCacheFilesystem;
 use PHPUnit\Framework\TestCase;
 
+
 class ZipCodeTest extends TestCase
 {
   const CACHE = __DIR__;

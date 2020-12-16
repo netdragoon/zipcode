@@ -6,7 +6,7 @@ use Exception;
 
 class ZipCodeRequest
 {
-    public function get($url): array
+    public function get($url): ?array
     {
         try {
             $ch = curl_init();

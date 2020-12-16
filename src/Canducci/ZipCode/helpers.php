@@ -13,3 +13,16 @@ if (!function_exists('zipcode')) {
     return $zipcode->find($value);
   }
 }
+
+if (!function_exists('address')) {
+  function address(string $uf, string $city, string $address): \Canducci\ZipCode\AddressResponse
+  {
+    if (function_exists('app')) {
+      $address = app(\Canducci\ZipCode\Address::class);
+    } else {
+      $request = new \Canducci\ZipCode\ZipCodeRequest();
+      $address = new \Canducci\ZipCode\Address($request);
+    }
+    return $address->find($uf, $city, $address);
+  }
+}

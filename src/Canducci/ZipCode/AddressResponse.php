@@ -2,19 +2,34 @@
 
 namespace Canducci\ZipCode;
 
-class AddressResponse
+use Countable;
+use Iterator;
+
+class AddressResponse implements Iterator, Countable
 {
   /**
    * 
    * @var array
    */
-  private $httpResponse;
+  private array $httpResponse;
 
   /**
    *
    * @var $json
    */
-  private $json;
+  private string $json;
+
+  /**
+   * 
+   * @var data 
+   */
+  private array $data = array();
+
+  /**
+   * 
+   * @var current
+   */
+  private int $current = 0;
 
   /**
    * 
@@ -23,62 +38,41 @@ class AddressResponse
    */
   public function __construct(string $json, array $httpResponse)
   {
+    $this->current = 0;
     $this->json = $json;
     $this->httpResponse = $httpResponse;
+    if (!empty($this->json)) {
+      $this->data = json_decode($this->json, true);
+    }
   }
 
-  /**
-   * 
-   * @return bool
-   */
-  public function isError(): bool
+  public function current()
   {
-    $array = $this->getArray();
-    return isset($array['erro']) && $array['erro'] === true;
+    return $this->data[$this->current];
   }
 
-  /**
-   * 
-   * @return int
-   */
-  public function getHttpCode(): int
+  public function key(): int
   {
-    return $this->httpResponse['http_code'];
+    return $this->current;
   }
 
-  /**
-   * 
-   * @return array
-   */
-  public function getHttpResponse(): array
+  public function next(): void
   {
-    return $this->httpResponse;
+    $this->current++;
   }
 
-  /**
-   * 
-   * @return string
-   */
-  public function getJson(): string
+  public function rewind(): void
   {
-    return $this->json;
+    $this->current = 0;
   }
 
-  /**
-   * 
-   * @return array
-   */
-  public function getArray(): array
+  public function valid(): bool
   {
-    return json_decode($this->getJson(), true);
+    return $this->current < count($this->data);
   }
 
-  /**
-   * 
-   * @return \Canducci\ZipCode\stdClass
-   */
-  public function getObject(): \stdClass
+  public function count(): int
   {
-    return json_decode($this->getJson(), false);
+    return count($this->data);
   }
 }

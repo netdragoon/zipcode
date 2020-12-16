@@ -16,6 +16,7 @@ class ZipCodeServiceProvider extends ServiceProvider
 
   public function register()
   {
+
     if (isset($this->app[\PhpExtended\SimpleCache\SimpleCacheFilesystem::class]) === false) {
       $this->app->singleton(
         'PhpExtended\SimpleCache\SimpleCacheFilesystem',
@@ -24,15 +25,23 @@ class ZipCodeServiceProvider extends ServiceProvider
         }
       );
     }
+
     if (isset($this->app[\Canducci\ZipCode\ZipCodeRequest::class]) === false) {
       $this->app->singleton(
         \Canducci\ZipCode\ZipCodeRequest::class,
         \Canducci\ZipCode\ZipCodeRequest::class
       );
     }
+
     $this->app->singleton(\Canducci\ZipCode\ZipCode::class, function ($app) {
       return new \Canducci\ZipCode\ZipCode(
         $app[\PhpExtended\SimpleCache\SimpleCacheFilesystem::class],
+        $app[\Canducci\ZipCode\ZipCodeRequest::class]
+      );
+    });
+
+    $this->app->singleton(\Canducci\ZipCode\Address::class, function ($app) {
+      return new \Canducci\ZipCode\Address(
         $app[\Canducci\ZipCode\ZipCodeRequest::class]
       );
     });
