@@ -5,7 +5,6 @@ declare(strict_types=1);
 use Canducci\ZipCode\ZipCodeUf;
 use PHPUnit\Framework\TestCase;
 
-
 class ZipCodeUfTest extends TestCase
 {
   public function testArrayListUf()
@@ -57,7 +56,6 @@ class ZipCodeUfTest extends TestCase
   public function testArrayDataUfValues()
   {
     $data = ZipCodeUf::lists();
-    var_dump($data);
     $this->assertEquals($data['AC'], ZipCodeUf::AC);
     $this->assertEquals($data['AL'], ZipCodeUf::AL);
     $this->assertEquals($data['AP'], ZipCodeUf::AP);
