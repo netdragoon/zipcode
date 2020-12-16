@@ -4,6 +4,9 @@ namespace Canducci\ZipCode\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+/**
+ * ZipCodeServiceProvider class
+ */
 class ZipCodeServiceProvider extends ServiceProvider
 {
 

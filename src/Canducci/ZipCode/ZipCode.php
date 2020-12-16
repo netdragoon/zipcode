@@ -7,6 +7,9 @@ namespace Canducci\ZipCode;
 use Exception;
 use PhpExtended\SimpleCache\SimpleCacheFilesystem;
 
+/**
+ * ZipCode class
+ */
 class ZipCode
 {
 
@@ -21,16 +24,28 @@ class ZipCode
   private $cache;
 
   /*
-   * @var const NAME
-  */
+   * const NAME
+   */
   const NAME = "zipcode";
 
+  /**
+   * __construct
+   *
+   * @param SimpleCacheFilesystem $cache
+   * @param ZipCodeRequest $request
+   */
   public function __construct(SimpleCacheFilesystem $cache, ZipCodeRequest $request)
   {
     $this->cache = $cache;
     $this->request = $request;
   }
 
+  /**
+   * find
+   *
+   * @param string $value
+   * @return ZipCodeResponse|null
+   */
   public function find(string $value): ?ZipCodeResponse
   {
     if (!$this->parse($value)) {
@@ -39,12 +54,24 @@ class ZipCode
     return $this->getOrSet($value);
   }
 
+  /**
+   * parse
+   *
+   * @param string $value
+   * @return boolean
+   */
   private function parse(string &$value): bool
   {
     $value = str_replace(['.', '-'], [''], $value);
     return mb_strlen($value) === 8 && preg_match('/^(\d){8}$/', $value);
   }
 
+  /**
+   * getOrSet
+   *
+   * @param string $value
+   * @return ZipCodeResponse|null
+   */
   private function getOrSet(string $value): ?ZipCodeResponse
   {
     $name = sprintf('%s_%s', ZipCode::NAME, $value);
@@ -59,6 +86,12 @@ class ZipCode
     return $response;
   }
 
+  /**
+   * url
+   *
+   * @param string $value
+   * @return string
+   */
   private function url(string $value): string
   {
     return str_replace('[cep]', $value, 'https://viacep.com.br/ws/[cep]/json/');

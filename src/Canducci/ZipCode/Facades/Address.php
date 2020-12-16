@@ -4,6 +4,9 @@ namespace Canducci\ZipCode\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
+/**
+ * ZipCodeAddress facade
+ */
 class ZipCodeAddress extends Facade
 {
 

@@ -2,20 +2,29 @@
 
 namespace Canducci\ZipCode;
 
+/**
+ * ZipCodeResponse class
+ */
 class ZipCodeResponse
 {
 
     /**
+     * $httpResponse
+     *
      * @var array
      */
     private $httpResponse;
-    /*
-     * @var $json
+
+    /**
+     * $json
+     *
+     * @var string
      */
     private $json;
 
     /**
-     * 
+     * __construct
+     *
      * @param string $json
      * @param array $httpResponse
      */
@@ -26,7 +35,9 @@ class ZipCodeResponse
     }
 
     /**
-     * @return bool
+     * isError
+     *
+     * @return boolean
      */
     public function isError(): bool
     {
@@ -35,7 +46,9 @@ class ZipCodeResponse
     }
 
     /**
-     * @return bool
+     * isValid
+     *
+     * @return boolean
      */
     public function isValid(): bool
     {
@@ -44,8 +57,9 @@ class ZipCodeResponse
     }
 
     /**
-     * 
-     * @return int
+     * getHttpCode
+     *
+     * @return integer
      */
     public function getHttpCode(): int
     {
@@ -53,6 +67,8 @@ class ZipCodeResponse
     }
 
     /**
+     * getHttpResponse
+     *
      * @return array
      */
     public function getHttpResponse(): array
@@ -61,7 +77,8 @@ class ZipCodeResponse
     }
 
     /**
-     * 
+     * getJson
+     *
      * @return string
      */
     public function getJson(): string
@@ -70,7 +87,8 @@ class ZipCodeResponse
     }
 
     /**
-     * 
+     * getArray
+     *
      * @return array
      */
     public function getArray(): array
@@ -79,8 +97,9 @@ class ZipCodeResponse
     }
 
     /**
-     * 
-     * @return \Canducci\ZipCode\stdClass
+     * getObject
+     *
+     * @return \stdClass
      */
     public function getObject(): \stdClass
     {
@@ -88,8 +107,9 @@ class ZipCodeResponse
     }
 
     /**
-     * 
-     * @return \Canducci\ZipCode\ZipCodeItem
+     * getZipCodeItem
+     *
+     * @return ZipCodeItem
      */
     public function getZipCodeItem(): ZipCodeItem
     {

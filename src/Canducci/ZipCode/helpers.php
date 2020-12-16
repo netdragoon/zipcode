@@ -1,6 +1,12 @@
 <?php
 
 if (!function_exists('zipcode')) {
+  /**
+   * zipcode
+   *
+   * @param string $value
+   * @return \Canducci\ZipCode\ZipCodeResponse|null
+   */
   function zipcode(string $value): ?\Canducci\ZipCode\ZipCodeResponse
   {
     if (function_exists('app')) {
@@ -15,6 +21,14 @@ if (!function_exists('zipcode')) {
 }
 
 if (!function_exists('address')) {
+  /**
+   * address
+   *
+   * @param string $uf
+   * @param string $city
+   * @param string $address
+   * @return \Canducci\ZipCode\AddressResponse|null
+   */
   function address(string $uf, string $city, string $address): ?\Canducci\ZipCode\AddressResponse
   {
     if (function_exists('app')) {

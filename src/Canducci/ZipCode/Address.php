@@ -2,26 +2,41 @@
 
 namespace Canducci\ZipCode;
 
+/**
+ * Address class
+ */
 class Address
 {
   /**
-   * @var $request
+   * $request
+   *
+   * @var Canducci\ZipCode\ZipCodeRequest
    */
   private $request;
 
-  /*
-   * @var const NAME
-  */
+  /**
+   * const NAME
+   */
   const NAME = "address";
 
   /**
-   * 
+   * __construct
+   *
+   * @param ZipCodeRequest $request
    */
   public function __construct(ZipCodeRequest $request)
   {
     $this->request = $request;
   }
 
+  /**
+   * find
+   *
+   * @param string $uf
+   * @param string $city
+   * @param string $address
+   * @return AddressResponse|null
+   */
   public function find(string $uf, string $city, string $address): ?AddressResponse
   {
     if (!$this->parse($uf, $city, $address)) {
@@ -30,11 +45,27 @@ class Address
     return $this->getOrSet($uf, $city, $address);
   }
 
+  /**
+   * parse
+   *
+   * @param string $uf
+   * @param string $city
+   * @param string $address
+   * @return boolean
+   */
   private function parse(string $uf, string $city, string $address): bool
   {
     return mb_strlen($uf) === 2 && mb_strlen($city) > 2 && mb_strlen($address) > 2;
   }
 
+  /**
+   * getOrSet
+   *
+   * @param string $uf
+   * @param string $city
+   * @param string $address
+   * @return AddressResponse|null
+   */
   private function getOrSet(string $uf, string $city, string $address): ?AddressResponse
   {
     $response = $this->request->get($this->url($uf, $city, $address));
@@ -44,6 +75,14 @@ class Address
     return null;
   }
 
+  /**
+   * url
+   *
+   * @param string $uf
+   * @param string $city
+   * @param string $address
+   * @return string
+   */
   private function url(string $uf, string $city, string $address): string
   {
     return sprintf(

@@ -3,8 +3,7 @@
 namespace Canducci\ZipCode;
 
 /**
- * Class ZipCodeUf
- * @package Canducci\ZipCode
+ * ZipCodeUf abstract class
  */
 abstract class ZipCodeUf
 {
@@ -37,8 +36,9 @@ abstract class ZipCodeUf
   const TO = 'to';
 
   /**
+   * lists
+   *
    * @return array
-   * @throws \ReflectionException
    */
   public static function lists(): array
   {

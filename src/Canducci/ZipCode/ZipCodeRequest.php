@@ -4,9 +4,18 @@ namespace Canducci\ZipCode;
 
 use Exception;
 
+/**
+ * ZipCodeRequest
+ */
 class ZipCodeRequest
 {
-    public function get($url): ?array
+    /**
+     * get
+     *
+     * @param string $url
+     * @return array|null
+     */
+    public function get(string $url): ?array
     {
         try {
             $ch = curl_init();

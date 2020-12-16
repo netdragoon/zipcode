@@ -2,6 +2,9 @@
 
 namespace Canducci\ZipCode;
 
+/**
+ * ZipCodeItem class
+ */
 class ZipCodeItem
 {
 
@@ -18,13 +21,15 @@ class ZipCodeItem
 
     public function __construct(array $data)
     {
-        foreach ($data as $key => $value) {            
+        foreach ($data as $key => $value) {
             $this->$key = $value;
         }
     }
 
     /**
-     * @return mixed
+     * getCep
+     *
+     * @return string
      */
     public function getCep(): string
     {
@@ -32,7 +37,9 @@ class ZipCodeItem
     }
 
     /**
-     * @return mixed
+     * getLogradouro
+     *
+     * @return string
      */
     public function getLogradouro(): string
     {
@@ -40,7 +47,9 @@ class ZipCodeItem
     }
 
     /**
-     * @return mixed
+     * getComplemento
+     *
+     * @return string
      */
     public function getComplemento(): string
     {
@@ -48,7 +57,9 @@ class ZipCodeItem
     }
 
     /**
-     * @return mixed
+     * getBairro
+     *
+     * @return string
      */
     public function getBairro(): string
     {
@@ -56,7 +67,9 @@ class ZipCodeItem
     }
 
     /**
-     * @return mixed
+     * getLocalidade
+     *
+     * @return string
      */
     public function getLocalidade(): string
     {
@@ -64,7 +77,9 @@ class ZipCodeItem
     }
 
     /**
-     * @return mixed
+     * getUf
+     *
+     * @return string
      */
     public function getUf(): string
     {
@@ -72,7 +87,9 @@ class ZipCodeItem
     }
 
     /**
-     * @return mixed
+     * getIbge
+     *
+     * @return string
      */
     public function getIbge(): string
     {
@@ -80,7 +97,9 @@ class ZipCodeItem
     }
 
     /**
-     * @return mixed
+     * getGia
+     *
+     * @return string
      */
     public function getGia(): string
     {
@@ -88,7 +107,9 @@ class ZipCodeItem
     }
 
     /**
-     * @return mixed
+     * getDdd
+     *
+     * @return string
      */
     public function getDdd(): string
     {
@@ -96,7 +117,9 @@ class ZipCodeItem
     }
 
     /**
-     * @return mixed
+     * getSiafi
+     *
+     * @return string
      */
     public function getSiafi(): string
     {
@@ -104,8 +127,10 @@ class ZipCodeItem
     }
 
     /**
-     * @param $name
-     * @return mixed
+     * __get
+     *
+     * @param string $name
+     * @return void
      */
     function __get($name)
     {
@@ -113,8 +138,10 @@ class ZipCodeItem
     }
 
     /**
-     * @param $name
-     * @param $value
+     * __set
+     *
+     * @param string $name
+     * @param mixed $value
      */
     function __set($name, $value)
     {
