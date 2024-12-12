@@ -162,7 +162,10 @@ if ($zipCodeInfo)
         [complemento] =>
         [gia] => 1004,
         [siafi] => 0
-        [ddd] = 11
+        [ddd] = 11,
+        [unidade] = '',
+        [estado] = '',
+        [regiao] = ''
     )
     */
 }
@@ -185,7 +188,10 @@ if ($zipCodeInfo)
         "complemento": ""
         "gia": 1004,
         "ddd": "11",
-        "siafi": 0
+        "siafi": 0,
+        "unidade": '',
+        "estado": '',
+        "regiao": ''
     }
     */
 }
@@ -209,7 +215,10 @@ if ($zipCodeInfo)
         [complemento] =>
         [gia] => 1004
         [siafi] => 0
-        [ddd] = 011
+        [ddd] = 011,
+        [unidade] = '',
+        [estado] = '',
+        [regiao] = ''
     )
     */
 }
