@@ -19,7 +19,9 @@ class ZipCodeServiceProvider extends ServiceProvider
 			$this->app->singleton(
 				'PhpExtended\SimpleCache\SimpleCacheFilesystem',
 				function ($app) {
-					return new \PhpExtended\SimpleCache\SimpleCacheFilesystem(config('simplecache.path') ?? __DIR__);
+					$path = config('simplecache.path') ?? __DIR__;
+					$fileSystem = new \PhpExtended\File\FileSystem($path);
+					return new \PhpExtended\SimpleCache\SimpleCacheFilesystem($fileSystem);
 				}
 			);
 		}

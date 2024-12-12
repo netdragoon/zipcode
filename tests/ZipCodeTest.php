@@ -10,6 +10,7 @@ use Canducci\ZipCode\ZipCodeRequest;
 use Canducci\ZipCode\ZipCodeTrait;
 use PhpExtended\SimpleCache\SimpleCacheFilesystem;
 use PHPUnit\Framework\TestCase;
+use PhpExtended\File\FileSystem;
 
 class ZipCodeTest extends TestCase
 {
@@ -31,7 +32,7 @@ class ZipCodeTest extends TestCase
         }
         $path = realpath(__DIR__ . '/tmp');
         $this->zipCode = new ZipCode(
-            new SimpleCacheFilesystem($path),
+            new SimpleCacheFilesystem(new Filesystem($path)),
             new ZipCodeRequest()
         );
     }
@@ -72,14 +73,14 @@ class ZipCodeTest extends TestCase
 
     public function testZipCodeAddressInfo(): void
     {
-        $zipCodeAddressInfo = $this->address->find('sp', 'são paulo', 'ave');
+        $zipCodeAddressInfo = $this->address->find('sp', 'paulo', 'ave');
         $this->assertNotNull($zipCodeAddressInfo);
         $this->assertInstanceOf(ZipCodeAddressInfo::class, $zipCodeAddressInfo);
     }
 
     public function testZipCodeAddressInfoTestMethods(): void
     {
-        $zipCodeAddressInfo = $this->address->find('sp', 'são paulo', 'ave');
+        $zipCodeAddressInfo = $this->address->find('sp', 'paulo', 'ave');
         $this->assertNotNull($zipCodeAddressInfo);
         $this->assertIsString($zipCodeAddressInfo->getJson());
         $this->assertIsArray($zipCodeAddressInfo->getArray());
@@ -97,7 +98,7 @@ class ZipCodeTest extends TestCase
 
     public function testZipCodeAddressReturnCeps(): void
     {
-        $zipCodeAddressInfo = $this->address->find('sp', 'são paulo', 'ave');
+        $zipCodeAddressInfo = $this->address->find('sp', 'paulo', 'ave');
         $datas = $zipCodeAddressInfo->getArray();
         $this->assertIsArray($datas);
         $this->assertEquals(50, $zipCodeAddressInfo->count());
@@ -106,7 +107,7 @@ class ZipCodeTest extends TestCase
 
     public function testZipCodeAddressTestKeys(): void
     {
-        $zipCodeAddressInfo = $this->address->find('sp', 'são paulo', 'ave');
+        $zipCodeAddressInfo = $this->address->find('sp', 'paulo', 'ave');
         $datas = $zipCodeAddressInfo->getArray();
         $this->assertArrayHasKey('cep', $datas[0]);
         $this->assertArrayHasKey('logradouro', $datas[0]);

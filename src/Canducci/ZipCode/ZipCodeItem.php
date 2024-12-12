@@ -19,6 +19,9 @@ class ZipCodeItem
     protected $gia;
     protected $ddd;
     protected $siafi;
+    protected $unidade;
+    protected $estado;
+    protected $regiao;
 
     /**
      * ZipCodeItem constructor.
@@ -30,10 +33,13 @@ class ZipCodeItem
      * @param $uf
      * @param $ibge
      * @param $gia
-     * @param $dddd
+     * @param $ddd
      * @param @siafi
+     * @param $unidade
+     * @param $estado
+     * @param @regiao
      */
-    public function __construct($cep, $logradouro, $complemento, $bairro, $localidade, $uf, $ibge, $gia, $ddd, $siafi)
+    public function __construct($cep, $logradouro, $complemento, $bairro, $localidade, $uf, $ibge, $gia, $ddd, $siafi, $unidade, $estado, $regiao)
     {
         $this->cep = $cep;
         $this->logradouro = $logradouro;
@@ -45,6 +51,9 @@ class ZipCodeItem
         $this->gia = $gia;
         $this->ddd = $ddd;
         $this->siafi = $siafi;
+        $this->unidade = $unidade;
+        $this->estado = $estado;
+        $this->regiao = $regiao;
     }
 
     /**
@@ -125,6 +134,30 @@ class ZipCodeItem
     public function getSiafi(): string
     {
         return $this->siafi;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUnidade(): string
+    {
+        return $this->unidade;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEstado(): string
+    {
+        return $this->estado;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRegiao(): string
+    {
+        return $this->regiao;
     }
 
     /**
