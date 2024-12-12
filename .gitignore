@@ -1,3 +1,4 @@
+src/tmp/*
 tests/tmp/*
 # Windows image file caches
 Thumbs.db
